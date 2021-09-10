@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="Pink_Magenta">#FD0054</color>
+    <color name="Blue_Turquoise">#43DDE6</color>
+    <color name="Grey">#364F6B</color>
+    <color name="black">#232323</color>
+    <color name="White_ish">#F0F0F0</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="turquoise">#30D5C8</color>
+    <color name="pureBlack">#000000</color>
+    <!-- Video Chat Activity -->
+    <color name="localBackground">#827b92</color>
+    <color name="remoteBackground">#484258</color>
+</resources>

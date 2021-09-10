@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="a_rudraksha">
+
+        <item name="android:textSize">
+            12sp
+        </item>
+
+        <item name="android:textColor">
+            @color/black
+        </item>
+
+    </style>
+
+    <style name="devi_shakti">
+
+        <item name="android:textSize">
+            26sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.05
+        </item>
+
+        <item name="android:textColor">
+            @color/Blue_Turquoise
+        </item>
+
+    </style>
+
+    <style name="astrology_n">
+
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+    </style>
+  
+    <style name="enter_your_">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+    </style>
+  
+  
+    <style name="information_text">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+
+    </style>
+
+    <style name="form_text">
+
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Blue_Turquoise
+        </item>
+
+
+    </style>
+
+    <style name="a_rudraksha_bold">
+
+        <item name="android:textSize">
+            12sp
+        </item>
+
+        <item name="android:textColor">
+            @color/black
+        </item>
+
+    </style>
+
+    <style name="user_Name">
+
+        <item name="android:textSize">
+            22sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+    </style>
+
+    <style name="expert_Name">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            @color/pureBlack
+        </item>
+
+    </style>
+
+    <style name="expert_rating">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            @color/pureBlack
+        </item>
+
+    </style>
+
+    <style name="expert_meeting_time">
+
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:textColor">
+            @color/pureBlack
+        </item>
+
+    </style>
+
+    <style name="user_location">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+    </style>
+
+    <style name="heading_16">
+
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Pink_Magenta
+        </item>
+
+    </style>
+
+    <style name="button_text_white">
+
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:textColor">
+            @color/White_ish
+        </item>
+
+    </style>
+
+    <style name="time_slots">
+        <item name="android:textSize">
+            12sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Blue_Turquoise
+        </item>
+
+        <item name="android:fontFamily">
+            @font/poppins_regular
+        </item>
+    </style>
+
+    <style name="expert_booking_text">
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            @color/Blue_Turquoise
+        </item>
+
+        <item name="android:fontFamily">
+            @font/poppins_regular
+        </item>
+    </style>
+
+</resources>

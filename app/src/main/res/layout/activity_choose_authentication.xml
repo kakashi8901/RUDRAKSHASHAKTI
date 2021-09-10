@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/authenticate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_1"
+                android:layout_width="168dp"
+                android:layout_height="170dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="91dp"
+                android:background="@drawable/logo" />
+
+
+            <!-- A Rudraksha Welfare Foundation Initiative -->
+
+            <TextView
+                android:id="@+id/a_rudraksha"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center_horizontal|top"
+                android:text="@string/a_rudraksha"
+                android:textAppearance="@style/a_rudraksha" />
+
+            <!-- DEVI SHAKTI -->
+            <TextView
+                android:id="@+id/devi_shakti"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="top"
+                android:text="@string/devi_shakti"
+                android:textAppearance="@style/devi_shakti" />
+
+            <!-- Astrology | Numerology | Vastu Shastra | Tarot Card | Red Book -->
+            <TextView
+                android:id="@+id/astrology_n"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_horizontal|top"
+                android:text="@string/astrology_n"
+                android:textAppearance="@style/astrology_n" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="0.25dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="17dp"
+                android:background="@color/turquoise" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/phoneAuth"
+                android:layout_width="339dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/phone_auth_button"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="24.24dp"
+                android:paddingEnd="24.24dp"
+                android:stateListAnimator="@null"
+                android:text="@string/phone_number"
+                android:textAllCaps="false"
+                android:textColor="@color/Blue_Turquoise"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="20dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageButton
+                        android:id="@+id/login_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/facebook_button"
+                        android:contentDescription="Facebook"
+                        android:src="@drawable/ic_facebookicon" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="20dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageButton
+                        android:id="@+id/button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/facebook_button"
+                        android:contentDescription="Google"
+                        android:src="@drawable/ic_google_logo" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="101.63dp"
+                android:layout_marginTop="56dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/waves" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+
+

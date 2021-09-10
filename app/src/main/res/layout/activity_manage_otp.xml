@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Authentication.ManageOtp">
+
+    <LinearLayout
+        android:layout_width="189dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="297dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/enter_code_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="top"
+            android:text="@string/enter_code_"
+            android:textColor="@color/Pink_Magenta"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/phone_number"
+            android:textColor="@color/Pink_Magenta" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="375dp">
+
+        <EditText
+            android:id="@+id/otp1"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:background="@drawable/phone_auth_border" />
+
+        <EditText
+            android:id="@+id/otp2"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border" />
+
+        <EditText
+            android:id="@+id/otp3"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border" />
+
+        <EditText
+            android:id="@+id/otp4"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border" />
+
+        <EditText
+            android:id="@+id/otp5"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border" />
+
+        <EditText
+            android:id="@+id/otp6"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border" />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/enterOtp"
+        android:layout_width="271dp"
+        android:layout_height="58dp"
+        android:layout_above="@+id/resendButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/phone_auth_border"
+        android:ems="10"
+        android:hint="Enter OTP here"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <ImageButton
+        android:id="@+id/verifyOtpButton"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="587dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="67.63dp"
+        android:background="@drawable/next_button_background"
+        android:elevation="1dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_arrow_1" />
+
+    <Button
+        android:id="@+id/resendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="137dp"
+        android:text="Re send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verifyOtpButton"
+        app:layout_constraintVertical_bias="0.217" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="101.63dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/waves" />
+</RelativeLayout>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Back button-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:elevation="24dp"
+                app:cardCornerRadius="50dp">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:background="@drawable/round_button_back"
+                    android:contentDescription="@string/back"
+                    android:src="@drawable/back_arrow" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Title text-->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/enter_your_details_to_create_a_new_account"
+                android:textAlignment="center"
+                android:textAppearance="@style/information_text" />
+
+
+            <!--Profile Picture-->
+            <RelativeLayout
+                android:id="@+id/profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    >
+                    <!--Profile Image-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileCard"
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:layout_marginTop="42dp"
+                        android:layout_marginBottom="42dp"
+                        app:cardCornerRadius="62.5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/profilePic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_profile_pic"
+                            android:elevation="5dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:contentDescription="@string/name" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!--Open Image selector-->
+                    <ImageButton
+                        android:id="@+id/chooseImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/profileCard"
+                        android:layout_alignBottom="@+id/profileCard"
+                        android:background="@drawable/round_button_back"
+                        android:src="@drawable/ic_choose_image"
+                        android:elevation="2dp"
+                        android:layout_marginBottom="7dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profileCard"
+                        app:layout_constraintEnd_toEndOf="@+id/profileCard"
+                        android:contentDescription="@string/app_name" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </RelativeLayout>
+
+            <!--Input Form-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/vector_bottom"
+                android:layout_below="@+id/profile"
+                android:orientation="vertical">
+
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:paddingStart="26dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+
+                <!--Date of birth-->
+                <EditText
+                    android:id="@+id/inputDateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:drawableEnd="@drawable/ic_ei_calendar"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/date_of_birth"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise" />
+
+                <!--gender of user -->
+                <AutoCompleteTextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:drawableEnd="@drawable/ic_dropdown"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/gender"
+                    android:inputType="textPersonName"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise" />
+
+                <!--state of birth-->
+                <AutoCompleteTextView
+                    android:id="@+id/inputStateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/state_of_birth"
+                    android:inputType="textPersonName"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise" />
+
+                <!--City of Birth-->
+                <AutoCompleteTextView
+                    android:id="@+id/inputCityOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/city_of_birth"
+                    android:inputType="textPersonName"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="16dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise" />
+
+
+                <!--Terms and conditions text-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/by_signing_up_you_agree_to_ourr"
+                        android:textAppearance="@style/a_rudraksha"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        app:layout_constraintEnd_toStartOf="@+id/termsAndCondition"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:fontFamily="@font/poppins_regular"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/termsAndCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:text="@string/terms_and_conditions"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textAppearance="@style/a_rudraksha_bold"
+                        android:fontFamily="@font/poppins_bold"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView4"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textAppearance="@style/a_rudraksha"
+                        android:fontFamily="@font/poppins_regular"
+                        app:layout_constraintEnd_toStartOf="@+id/privacyPolicy"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+                    <TextView
+                        android:id="@+id/privacyPolicy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/privacy_policies"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:textAppearance="@style/a_rudraksha_bold"
+                        android:fontFamily="@font/poppins_bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView5"
+                        app:layout_constraintTop_toBottomOf="@id/textView4" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+            <!--Next button-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-35dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="20dp"
+                app:cardCornerRadius="50dp">
+
+                <ImageButton
+                    android:id="@+id/nextBtn"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:background="@drawable/next_btn"
+                    android:contentDescription="@string/next"
+                    android:src="@drawable/ic_arrow_1" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!--background bottom image-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="101.63dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/waves" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

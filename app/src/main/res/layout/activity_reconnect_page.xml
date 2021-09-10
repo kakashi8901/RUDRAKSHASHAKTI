@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/authenticate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="125dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/disconnected"
+            android:textColor="@color/Pink_Magenta"
+            android:textSize="22sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp">
+
+            <TextView
+                android:id="@+id/reconnectText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Turn on your "
+                android:textColor="@color/Pink_Magenta"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/reconnectText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/reconnectText1"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Wifi"
+                android:textColor="@color/Pink_Magenta"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/reconnectText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/reconnectText2"
+                android:fontFamily="@font/poppins_regular"
+                android:text=" or "
+                android:textColor="@color/Pink_Magenta"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/reconnectText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/reconnectText3"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Mobile Data"
+                android:textColor="@color/Pink_Magenta"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/reconnectText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/reconnectText4"
+                android:fontFamily="@font/poppins_regular"
+                android:text=" to continue"
+                android:textColor="@color/Pink_Magenta"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/image_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/ic_reconnect" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/reconnectBtn"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/phone_auth_button"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingStart="24.24dp"
+            android:paddingEnd="24.24dp"
+            android:stateListAnimator="@null"
+            android:text="@string/reconnect"
+            android:textAllCaps="false"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="101.63dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/waves" />
+
+</RelativeLayout>
+
+

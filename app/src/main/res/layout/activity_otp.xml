@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Authentication.ManageOtp">
+
+    <!-- Back button-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/backotpCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:elevation="24dp"
+        app:cardCornerRadius="50dp">
+
+        <ImageButton
+            android:id="@+id/backotp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/round_button_back"
+            android:contentDescription="@string/back"
+            android:src="@drawable/back_arrow" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="189dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="297dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/enter_code_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="top"
+            android:text="@string/enter_code_"
+            android:textColor="@color/Pink_Magenta"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                tools:text="+91-1234567890"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/Pink_Magenta" />
+
+            <TextView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/edit"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/Pink_Magenta" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="375dp">
+
+        <EditText
+            android:id="@+id/otp1"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/otp2"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/otp3"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/otp4"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/otp5"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/otp6"
+            android:layout_width="41dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/phone_auth_border"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="number"
+            android:maxLength="1"
+            android:paddingStart="12dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/enterOtp"
+        android:layout_width="271dp"
+        android:layout_height="58dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="570dp"
+        android:background="@drawable/phone_auth_border"
+        android:ems="10"
+        android:hint="Enter OTP here"
+        android:inputType="textPersonName"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384"
+        android:visibility="gone"
+        tools:ignore="NotSibling" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="445dp">
+
+        <TextView
+            android:id="@+id/didnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/didnt"
+            android:textColor="@color/Pink_Magenta" />
+
+        <TextView
+            android:id="@+id/resend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/resend"
+            android:textColor="@color/Pink_Magenta" />
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="66dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="20dp"
+        app:cardCornerRadius="50dp">
+
+        <ImageButton
+            android:id="@+id/otpnext"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@drawable/next_btn"
+            android:contentDescription="@string/next"
+            android:src="@drawable/ic_arrow_1" />
+
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="101.63dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/waves" />
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">RUDRAKSHASHAKTI</string>
+    <string name="default_web_client_">
+        647353297573-aefusmpi4ku1b94mum4n7gprmrgk5rj4.apps.googleusercontent.com</string>
+    <string name="web_client">
+        647353297573-p9rtbmg7p5nfhb8pjh9av9u3ordgdh3u.apps.googleusercontent.com
+    </string>
+    <string name="facebook_app_id">1401583893526903</string>
+    <string name="fb_login_protocol_scheme">fb1401583893526903</string>
+
+    <string name="a_rudraksha">
+    A Rudraksha Welfare Foundation Initiative
+    </string>
+
+    <string name="devi_shakti">
+    DEVI SHAKTI
+    </string>
+
+    <string name="astrology_n">
+    Astrology | Numerology | Vastu Shastra |\nTarot Card | Red Book
+    </string>
+    <string name="enter_your_details_to_create_a_new_account">Enter your details to create a new account</string>
+    <string name="name">Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="state_of_birth">State of Birth</string>
+    <string name="city_of_birth">City of Birth</string>
+    <string name="by_signing_up_you_agree_to_ourr">By signing up you agree to our  </string>
+    <string name="terms_and_conditions">  Terms and Conditions</string>
+    <string name="amp"><![CDATA[ & ]]></string>
+    <string name="privacy_policies">  Privacy Policies</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+
+    <string name="enter_your_">
+    Enter your phone number to continue
+    </string>
+    <string name="phone_number">Phone Number</string>
+
+    <string name="country_code">
+    +91
+    </string>
+
+    <string name="enter_code_">
+    Enter code sent to
+        <!--        \n +91 9162715241-->
+    </string>
+    <string name="edit">(edit)</string>
+    <string name="resend">Resend</string>
+    <string name="didnt">Didn’t receive? </string>
+    <string name="reconnect">Reconnect</string>
+    <string name="reconnect_text">Turn on your Wifi or Mobile Data to continue</string>
+    <string name="disconnected">Disconnected!</string>
+    <string name="services">Services</string>
+    <string name="languages">Languages</string>
+    <string name="timings">Timings</string>
+    <string name="timings_list">
+        Monday: 10 AM to 5 PM\n\nTuesday: 10 AM to 5 PM\n\nWednesday: 10 AM to 5 PM\n\nThursday: 10 AM to 5 PM\n\nFriday: 10 AM to 5 PM\n\nSaturday: 10 AM to 5 PM\n\nSunday: 10 AM to 5 PM
+    </string>
+    <string name="background">Background</string>
+    <string name="background_content">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+    </string>
+    <string name="gender">Gender</string>
+    <string name="favourite_experts">Favourite Experts</string>
+    <string name="calls">Calls</string>
+    <string name="about_us">About Us</string>
+    <string name="faq_s">FAQ’s</string>
+    <string name="go_to_website">Go To Website</string>
+    <string name="a_rudraksha_welfare_foundation_initiative">A Rudraksha Welfare Foundation Initiative</string>
+    <string name="made_in_india">Made In India</string>
+    <string name="logout">LOGOUT</string>
+    <string name="favorite_experts">Favorite Experts</string>
+    <string name="upcoming_calls">Upcoming Calls</string>
+    <string name="previous_calls">Previous Calls</string>
+    <string name="review">Review</string>
+    <string name="submit">Submit</string>
+    <string name="book_now">Book Now</string>
+    <string name="what_next">What next?</string>
+    <string name="creators">Creators</string>
+    <string name="email_id">Email ID</string>
+    <string name="basic_details">Basic Details</string>
+    <string name="pooja_details">Pooja Details</string>
+    <string name="date">Date</string>
+    <string name="time_slots">Time Slots</string>
+    <string name="price">Price</string>
+    <string name="total_price">Total Price</string>
+    <string name="same_as_whatsapp_number">Same as WhatsApp number</string>
+    <string name="additional_information">Additional Information</string>
+    <string name="done">DONE</string>
+    <string name="congratulations_your_booking_has_been_confirmed">congrATULations...Your booking has been confirmed.</string>
+    <string name="team_devi_shakti">Team Devi Shakti</string>
+    <string name="know_the_creators_of_devi_shakti">Know the creators of “Devi Shakti”...</string>
+    <string name="agora_app_id">e308b15a71e448b686d49256e0ce8e8f</string>
+    <string name="agora_access_token">006e308b15a71e448b686d49256e0ce8e8fIABHk0TDlQu0yqpZLR5lrovGazqZwURvWiz5S2ZFmXn9n+IVUyEAAAAAEAA8nW45m78nYQEAAQCavydh</string>
+    <string name="birth_details">Birth Details</string>
+    <string name="hour">Hour</string>
+    <string name="minute">Minute</string>
+    <string name="seconds">Seconds</string>
+    <string name="place_of_birth">Place Of Birth</string>
+    <string name="create_kundali">Create Kundali</string>
+    <string name="details">Details</string>
+    <string name="whatsapp_number">Whatsapp Number</string>
+
+</resources>
