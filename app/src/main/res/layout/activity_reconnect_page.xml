@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/authenticate"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,114 +17,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="125dp"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="@string/disconnected"
-            android:textColor="@color/Pink_Magenta"
-            android:textSize="22sp" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="3dp">
-
-            <TextView
-                android:id="@+id/reconnectText1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Turn on your "
-                android:textColor="@color/Pink_Magenta"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/reconnectText2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@+id/reconnectText1"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Wifi"
-                android:textColor="@color/Pink_Magenta"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/reconnectText3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@+id/reconnectText2"
-                android:fontFamily="@font/poppins_regular"
-                android:text=" or "
-                android:textColor="@color/Pink_Magenta"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/reconnectText4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@+id/reconnectText3"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Mobile Data"
-                android:textColor="@color/Pink_Magenta"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/reconnectText5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@+id/reconnectText4"
-                android:fontFamily="@font/poppins_regular"
-                android:text=" to continue"
-                android:textColor="@color/Pink_Magenta"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
+            android:textColor="@color/Blue_Turquoise"
+            android:textSize="26sp" />
 
         <ImageView
             android:id="@+id/image_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/ic_reconnect" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/reconnectBtn"
-            android:layout_width="339dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="75dp"
-            android:background="@drawable/phone_auth_button"
-            android:fontFamily="@font/poppins_regular"
-            android:paddingStart="24.24dp"
-            android:paddingEnd="24.24dp"
-            android:stateListAnimator="@null"
-            android:text="@string/reconnect"
-            android:textAllCaps="false"
-            android:textColor="@color/Blue_Turquoise"
-            android:textSize="22sp" />
-
         <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
-            android:visibility="gone" />
-
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/Blue_Turquoise"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Turn on your WIFI or Mobile data to continue!"
+            />
 
     </LinearLayout>
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="101.63dp"
+
+    <com.sinaseyfi.advancedcardview.AdvancedCardView
+        android:id="@+id/reconnectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/waves" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        app:background_Color="@color/Blue_Turquoise"
+        app:cornerRadius="18dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/Blue_Turquoise"
+            android:gravity="center"
+            android:layout_marginTop="1dp"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/reconnect"
+            android:textSize="22sp" />
+
+    </com.sinaseyfi.advancedcardview.AdvancedCardView>
 
 </RelativeLayout>
-
-

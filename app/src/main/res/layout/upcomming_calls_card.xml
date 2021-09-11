@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+
+    <!-- Up coming calls not opened layout-->
+    <com.sinaseyfi.advancedcardview.AdvancedCardView
+        android:id="@+id/upcomingCallsCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:background_Color="@color/white"
+        app:cornerRadius="15dp"
+        app:background_Type="stroke"
+        app:stroke_Color="@color/White_ish"
+        app:stroke_Width="2dp"
+        android:elevation="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!--Dropdown Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignEnd="@+id/dropdown_menu"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="-2dp"
+                android:orientation="horizontal">
+                <!--Expert profile pic-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profileCard"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:elevation="20dp"
+                    app:cardCornerRadius="500dp">
+
+                    <ImageView
+                        android:id="@+id/expertProfilePic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/name"
+                        android:elevation="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_profile_pic"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.cardview.widget.CardView>
+
+                <!--Expert Name and time-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="23dp"
+                    android:orientation="vertical">
+
+                    <!--Name-->
+                    <TextView
+                        android:id="@+id/expertName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Nisha Rao"
+                        android:textAlignment="textStart"
+                        android:textAppearance="@style/expert_Name" />
+
+                    <!--Time-->
+                    <TextView
+                        android:id="@+id/upcomingCallTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="4:00PM"
+                        android:textAlignment="textStart"
+                        android:textAppearance="@style/expert_meeting_time" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/dropdown_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="#000000"
+                android:background="@drawable/ic_baseline_expand_more_24"/>
+
+        </RelativeLayout>
+
+    </com.sinaseyfi.advancedcardview.AdvancedCardView>
+
+    <!-- Dropdown call details layout-->
+    <LinearLayout
+        android:id="@+id/detailsCallDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="@drawable/expert_details_dropdown_background"
+        >
+
+        <!--Service text-->
+        <TextView
+            android:id="@+id/service"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="46dp"
+            android:layout_marginBottom="10dp"
+            android:text="Service: Numerology"
+            android:textAlignment="center"
+            android:textAppearance="@style/expert_rating"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+        <!--Date text-->
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:text="Date: 21-08-2021"
+            android:textAlignment="center"
+            android:textAppearance="@style/expert_rating"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+        <!--Time text-->
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:text="Time: 4:00 PM"
+            android:textAlignment="center"
+            android:textAppearance="@style/expert_rating"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+        <!--Duration text-->
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="28dp"
+            android:text="Duration: 30 mins"
+            android:textAlignment="center"
+            android:textAppearance="@style/expert_rating"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

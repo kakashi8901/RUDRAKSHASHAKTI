@@ -1,18 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Common.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="35dp"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!--user profile image and details-->
+            <LinearLayout
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                android:layout_marginEnd="20dp"
+                >
+
+                <!--profile pic-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profileCard"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="500dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardElevation="6dp">
+                    <ImageView
+                        android:id="@+id/userProfilePic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_profile_pic"
+                        android:elevation="5dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/name" />
+                </androidx.cardview.widget.CardView>
+
+                <!--User Name and location-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginStart="21dp">
+
+                    <!--User name-->
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:textAppearance="@style/user_Name"
+                        android:textSize="22sp"
+                        android:text="Dhruvraj"
+                        />
+
+                    <!--User Location-->
+                    <TextView
+                        android:id="@+id/userLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAppearance="@style/user_location"
+                        android:textSize="14sp"
+                        android:text="Thiruvananthapuram, Orissa"
+                        />
+                    <!--Rating-->
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:orientation="horizontal">
+
+                        <!--Rating star-->
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="start"
+                            android:background="@drawable/ic_baseline_star_half" />
+                        <!--Rating number-->
+                        <TextView
+                            android:id="@+id/expert_rating_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textSize="18sp"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="4.5 "
+                            android:textColor="@color/Pink_Magenta" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Present Call"
+                android:textAppearance="@style/heading_16"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="22dp"
+                android:textAlignment="textStart"
+                />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/callingCard"
+                android:backgroundTint="@color/white"
+                android:elevation="4dp"
+                android:layout_below="@id/details"
+                android:layout_width="match_parent"
+                app:cardCornerRadius="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:layout_height="80dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#8AFD04"
+                        android:backgroundTint="#8AFD04"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expertCard"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="12dp"
+                        app:cardCornerRadius="500dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/callExpertImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/name"
+                            android:elevation="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_profile_pic" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/callExpertName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Ragesh Pal"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintBottom_toTopOf="@+id/callExpertTimeslot"
+                        app:layout_constraintStart_toEndOf="@id/expertCard"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <TextView
+                        android:id="@+id/callExpertTimeslot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="11:00Am - 12:00Pm"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="@color/Grey"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/expertCard"
+                        app:layout_constraintTop_toBottomOf="@+id/callExpertName" />
+
+                    <ImageButton
+                        android:id="@+id/audioCall"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_baseline_phone_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/videoCall"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/black" />
+
+                    <ImageButton
+                        android:id="@+id/videoCall"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_video_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Upcomming Calls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:orientation="vertical">
+                <!-- upcoming_calls Heading -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/upcoming_calls"
+                    android:textAppearance="@style/heading_16"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="26dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <!-- upcoming_calls Cards -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcomingCalls"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/noUpcomingCalls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=" Sorry No Upcoming Calls"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <!-- Previous Calls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:orientation="vertical">
+                <!-- upcoming_calls Heading -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/previous_calls"
+                    android:textAppearance="@style/heading_16"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="26dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <!-- upcoming_calls Cards -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/previousCalls"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    />
+                <TextView
+                    android:id="@+id/noPreviousCalls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=" Sorry No Previous Calls"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+    </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+
+</androidx.core.widget.NestedScrollView>

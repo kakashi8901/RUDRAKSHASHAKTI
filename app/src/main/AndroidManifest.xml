@@ -20,18 +20,27 @@
         <activity android:name=".Common.MainActivity">
 
         </activity>
-        <activity android:name=".Common.ReconnectPage"/>
-        <activity android:name=".Authentication.ChooseAuthentication">
+        <activity android:name=".Common.ReconnectPage"
+            android:theme="@style/theme.reconnect"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Authentication.ChooseAuthentication"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Authentication.DetailsPage"/>
-        <activity android:name=".Authentication.ManageOtp"/>
-        <activity android:name=".Authentication.OtpActivity"/>
-        <activity android:name=".Authentication.PhoneAuthentication"/>
+        <activity android:name=".Authentication.DetailsPage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.ManageOtp"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.OtpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Authentication.PhoneAuthentication"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
