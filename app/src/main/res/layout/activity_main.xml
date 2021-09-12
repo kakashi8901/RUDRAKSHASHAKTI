@@ -17,12 +17,26 @@
             android:layout_marginBottom="35dp"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="500dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F0F0F0"
+                >
+
+            </androidx.cardview.widget.CardView>
+
             <!--user profile image and details-->
             <LinearLayout
                 android:id="@+id/details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 android:layout_marginEnd="20dp"
                 >
@@ -67,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:textAppearance="@style/user_Name"
+                        android:textColor="@color/Blue_Turquoise"
                         android:textSize="22sp"
                         android:text="Dhruvraj"
                         />
@@ -78,6 +93,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
                         android:textAppearance="@style/user_location"
+                        android:textColor="@color/Blue_Turquoise"
                         android:textSize="14sp"
                         android:text="Thiruvananthapuram, Orissa"
                         />
@@ -105,7 +121,7 @@
                             android:layout_gravity="center"
                             android:fontFamily="@font/poppins_medium"
                             android:text="4.5 "
-                            android:textColor="@color/Pink_Magenta" />
+                            android:textColor="@color/Blue_Turquoise" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -120,6 +136,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
                 android:textAlignment="textStart"
                 />
             <androidx.cardview.widget.CardView
@@ -129,7 +146,7 @@
                 android:layout_below="@id/details"
                 android:layout_width="match_parent"
                 app:cardCornerRadius="18dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginStart="22dp"
                 android:layout_marginEnd="22dp"
                 android:layout_height="80dp">
@@ -141,8 +158,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="#8AFD04"
-                        android:backgroundTint="#8AFD04"
+                        android:background="@color/Blue_Turquoise"
+                        android:backgroundTint="@color/Blue_Turquoise"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

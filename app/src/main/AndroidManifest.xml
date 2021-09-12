@@ -24,6 +24,12 @@
             android:theme="@style/theme.reconnect"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".VideoCall.IncomingCallInvitation"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".VideoCall.OutgoingCallInvitation"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".Authentication.ChooseAuthentication"
             android:screenOrientation="portrait"
             >
