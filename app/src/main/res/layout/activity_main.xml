@@ -53,7 +53,7 @@
                     android:layout_marginBottom="5dp"
                     app:cardElevation="6dp">
                     <ImageView
-                        android:id="@+id/userProfilePic"
+                        android:id="@+id/expertProfilePic"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_profile_pic"
@@ -76,7 +76,7 @@
 
                     <!--User name-->
                     <TextView
-                        android:id="@+id/userName"
+                        android:id="@+id/expertName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semi_bold"
@@ -88,7 +88,7 @@
 
                     <!--User Location-->
                     <TextView
-                        android:id="@+id/userLocation"
+                        android:id="@+id/expertLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
@@ -113,7 +113,7 @@
                             android:background="@drawable/ic_baseline_star_half" />
                         <!--Rating number-->
                         <TextView
-                            android:id="@+id/expert_rating_num"
+                            android:id="@+id/expertRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
