@@ -117,7 +117,18 @@
                 android:layout_above="@+id/vector_bottom"
                 android:layout_below="@+id/profile"
                 android:orientation="vertical">
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Basic Details :"
+                    android:textAppearance="@style/heading_16"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
                 <!--Name-->
                 <EditText
                     android:id="@+id/inputName"
@@ -128,6 +139,61 @@
                     android:background="@drawable/text_input_box"
                     android:fontFamily="@font/poppins"
                     android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:paddingStart="26dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputFathersName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Fathers Name"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:paddingStart="26dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputWhatsappNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Whatsapp Number"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:paddingStart="26dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputUPINumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="UPI Payment Number"
                     android:inputType="textPersonName"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:paddingStart="26dp"
@@ -176,6 +242,7 @@
                     android:textColor="@color/Blue_Turquoise"
                     android:textColorHint="@color/Blue_Turquoise" />
 
+
                 <!--state of birth-->
                 <AutoCompleteTextView
                     android:id="@+id/inputStateOfBirth"
@@ -211,6 +278,19 @@
                     android:textSize="20sp"
                     android:textColor="@color/Blue_Turquoise"
                     android:textColorHint="@color/Blue_Turquoise" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Professional Details :"
+                    android:textAppearance="@style/heading_16"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
 
 
                 <!--Terms and conditions text-->
