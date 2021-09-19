@@ -39,7 +39,7 @@ import retrofit2.Response;
 public class OutgoingCallInvitation extends AppCompatActivity implements View.OnClickListener {
     ActivityOutgoingCallInvitationBinding binding;
     private String invitersToken = null;
-    String name,timeSlot,expertToken,expertImage;
+    String name,timeSlot,expertToken,expertImage,userImage,userName;
     String meetingType =null;
     String meetingRoom = null;
     @Override
@@ -55,6 +55,8 @@ public class OutgoingCallInvitation extends AppCompatActivity implements View.On
         timeSlot = intent.getExtras().getString("Timeslot");
         expertToken = intent.getExtras().getString("ExpertToken");
         expertImage = intent.getExtras().getString("ExpertImage");
+        userImage = intent.getExtras().getString("UserImage");
+        userName = intent.getExtras().getString("UserName");
         initialize();
 
 
@@ -70,9 +72,9 @@ public class OutgoingCallInvitation extends AppCompatActivity implements View.On
                 binding.call.setText("Audio Calling...");
             }
         }
-        binding.expertName.setText(name);
+        binding.expertName.setText(userName);
         Picasso.with(getApplicationContext())
-                .load(expertImage)
+                .load(userImage)
                 .into(binding.expertImage);
         FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
             @Override

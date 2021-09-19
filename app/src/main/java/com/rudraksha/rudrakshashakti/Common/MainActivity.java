@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -53,11 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String uid;
     private String mainService=null;
     private MyProgressDialog myProgressDialog;
-    String callUserToken = "fZYO3QcHRhWyKvpOlC5zlE:APA91bEfjURm0yJWtaXWeBF-j7ofup4gM6Lno9GZusezQ-r6iU6vvJ6KBKUG5yoS37PmMT6uqN-e-621v7e9T3SxlymEX5nCU18pxCvdH3AKuJYCxH1BgaOoBNtQ1EWcSzSKSFTNjo_K",
-            callUserName="sdgs",
-            callUserTimeslot="sgg",
-            callUserImage="hgf";
+    String callUserToken ,
+            callUserName,
+            callUserTimeslot,
+            callUserImage,callExpertImage,callExpertName;
 
+
+    JSONObject userCallDetails;
 
     @Override
     protected void onStart() {
@@ -88,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * Get Upcomming Calls from firestore*/
     public void getUpcomingAndPreviousCalls() {
-        Utilities.makeToast(uid, getApplicationContext());
         Map<String, String> data = new HashMap<>();
         data.put("uid",uid);
 
@@ -105,8 +108,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            boolean callExist = false;
                             expertExist = response.getBoolean("expertExist");
                             if (expertExist){
+                                callExpertName= response.getString("expertName");
+                                callExpertImage = response.getString("expertProfilePic");
                                 Picasso.with(getApplicationContext())
                                         .load(response.getString("expertProfilePic"))
                                         .into(binding.expertProfilePic);
@@ -114,6 +120,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 binding.expertLocation.setText(response.getString("expertState")+" "+response.getString("expertCity"));
                                 binding.expertRating.setText(response.getString("expertRating"));
                                 mainService = response.getString("mainService");
+                                callExist = response.getBoolean("callExist");
+                                Utilities.makeToast(String.valueOf(callExist),getApplicationContext());
+                                if(callExist){
+                                    userCallDetails = response.getJSONObject("calldata");
+                                    callUserImage = userCallDetails.getString("userProfilePic");
+                                    Toast.makeText(MainActivity.this, callUserName, Toast.LENGTH_SHORT).show();
+                                    callUserName = userCallDetails.getString("userName");
+                                    callUserTimeslot = userCallDetails.getString("timeSlot");
+                                    String userUid = userCallDetails.getString("userUid");
+                                    FirebaseFirestore database = FirebaseFirestore.getInstance();
+                                    database.collection("users").document(userUid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            callUserToken = documentSnapshot.getString("FCMToken");
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull @NotNull Exception e) {
+                                            Utilities.makeToast("User is not Registered",getApplicationContext());
+                                        }
+                                    });
+                                    binding.callUserName.setText(callUserName);
+                                    binding.callUserTimeslot.setText(callUserTimeslot);
+                                    Picasso.with(getApplicationContext())
+                                            .load(callUserImage)
+                                            .into(binding.callUserImage);
+                                    binding.noCalls.setVisibility(View.GONE);
+                                    binding.callingCard.setVisibility(View.VISIBLE);
+                                }
                                 if (mainService != null){
                                     setToken();
                                 }
@@ -289,10 +324,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             Intent intent = new Intent(this, OutgoingCallInvitation.class);
             intent.putExtra("MeetingType", type);
-            intent.putExtra("ExpertName", callUserName);
+            intent.putExtra("ExpertName", callExpertName);
+            intent.putExtra("UserName", callUserName);
             intent.putExtra("Timeslot", callUserTimeslot);
             intent.putExtra("ExpertToken", callUserToken);
-            intent.putExtra("ExpertImage", callUserImage);
+            intent.putExtra("ExpertImage",callExpertImage );
+            intent.putExtra("UserImage", callUserImage);
             startActivity(intent);
         }
     }

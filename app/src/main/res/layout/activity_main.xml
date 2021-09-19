@@ -129,6 +129,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/presentCalls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Present Call"
@@ -139,8 +140,20 @@
                 android:layout_marginEnd="22dp"
                 android:textAlignment="textStart"
                 />
+
+            <TextView
+                android:id="@+id/noCalls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text=" No Live Calls Now"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
             <androidx.cardview.widget.CardView
                 android:id="@+id/callingCard"
+                android:visibility="gone"
                 android:backgroundTint="@color/white"
                 android:elevation="4dp"
                 android:layout_below="@id/details"
@@ -177,7 +190,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/callExpertImage"
+                            android:id="@+id/callUserImage"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/name"
@@ -187,7 +200,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/callExpertName"
+                        android:id="@+id/callUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -196,13 +209,13 @@
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:layout_marginTop="20dp"
-                        app:layout_constraintBottom_toTopOf="@+id/callExpertTimeslot"
+                        app:layout_constraintBottom_toTopOf="@+id/callUserTimeslot"
                         app:layout_constraintStart_toEndOf="@id/expertCard"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
-                        android:id="@+id/callExpertTimeslot"
+                        android:id="@+id/callUserTimeslot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -214,7 +227,7 @@
                         android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/expertCard"
-                        app:layout_constraintTop_toBottomOf="@+id/callExpertName" />
+                        app:layout_constraintTop_toBottomOf="@+id/callUserName" />
 
                     <ImageButton
                         android:id="@+id/audioCall"
