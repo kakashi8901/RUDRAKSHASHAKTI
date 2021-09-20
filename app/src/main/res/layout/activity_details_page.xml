@@ -349,49 +349,7 @@
 
                 </com.sinaseyfi.advancedcardview.AdvancedCardView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/mainExpertiesDegree"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/text_input_box"
-                        android:fontFamily="@font/poppins"
-                        android:hint="Degree"
-                        android:inputType="textPersonName"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                        android:paddingStart="26dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:textColorHint="@color/Blue_Turquoise"
-                        tools:ignore="RtlSymmetry" />
-                    <EditText
-                        android:id="@+id/mainExpertiesExperience"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/text_input_box"
-                        android:fontFamily="@font/poppins"
-                        android:hint="Experience(Years)"
-                        android:inputType="phone"
-                        android:paddingStart="26dp"
-                        android:textSize="16sp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:textColorHint="@color/Blue_Turquoise"
-                        tools:ignore="RtlSymmetry" />
-
-
-
-                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -410,48 +368,85 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:orientation="vertical">
-                    <CheckBox
-                        android:id="@+id/astrology"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:text="Astrology" />
-                    <CheckBox
-                        android:id="@+id/numerology"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:text="Numerology" />
-                    <CheckBox
-                        android:id="@+id/vastuShastra"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:text="Vastu Shastra" />
-                    <CheckBox
-                        android:id="@+id/lalKitab"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:text="Lal Kitab" />
-                    <CheckBox
-                        android:id="@+id/tarotCards"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textColor="@color/Blue_Turquoise"
-                        android:text="Tarot Cards" />
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/all"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Select All"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toStartOf="@+id/tarotCard"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/astrology"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Astrology"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toStartOf="@+id/numerology"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/all" />
+
+                        <CheckBox
+                            android:id="@+id/numerology"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Numerology"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/astrology"
+                            app:layout_constraintTop_toBottomOf="@id/all" />
+
+                        <CheckBox
+                            android:id="@+id/vastuShastra"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Vastu Shastra"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintStart_toStartOf="@+id/astrology"
+                            app:layout_constraintTop_toBottomOf="@id/astrology" />
+
+                        <CheckBox
+                            android:id="@+id/lalKitab"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Lal Kitab"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="@+id/numerology"
+                            app:layout_constraintTop_toBottomOf="@id/numerology" />
+
+                        <CheckBox
+                            android:id="@+id/tarotCard"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Tarot Card"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/all"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
                 </LinearLayout>
