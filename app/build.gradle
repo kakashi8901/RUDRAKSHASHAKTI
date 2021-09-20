@@ -59,6 +59,8 @@ dependencies {
     implementation 'com.github.sina-seyfi:AdvancedCardView:1.0.1'
     //lottie file
     implementation "com.airbnb.android:lottie:3.4.0"
+    //Spinner
+    implementation "com.github.skydoves:powerspinner:1.1.7"
     //volley
     implementation 'com.android.volley:volley:1.2.1'
     //picasso

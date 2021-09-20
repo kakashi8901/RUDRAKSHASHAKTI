@@ -176,8 +176,7 @@
                     android:background="@drawable/text_input_box"
                     android:fontFamily="@font/poppins"
                     android:hint="Whatsapp Number"
-                    android:inputType="textPersonName"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="phone"
                     android:paddingStart="26dp"
                     android:textSize="20sp"
                     android:textColor="@color/Blue_Turquoise"
@@ -194,8 +193,7 @@
                     android:background="@drawable/text_input_box"
                     android:fontFamily="@font/poppins"
                     android:hint="UPI Payment Number"
-                    android:inputType="textPersonName"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:inputType="phone"
                     android:paddingStart="26dp"
                     android:textSize="20sp"
                     android:textColor="@color/Blue_Turquoise"
@@ -292,6 +290,171 @@
                     android:textAlignment="textStart"
                     />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Main Experty"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <com.sinaseyfi.advancedcardview.AdvancedCardView
+                    android:id="@+id/mainExperties"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="16dp"
+                    app:background_Type="stroke"
+                    app:cornerRadius="10dp"
+                    app:stroke_Color="@color/Blue_Turquoise"
+                    app:stroke_ColorType="solid"
+                    app:stroke_Width="0.5dp">
+
+                    <com.skydoves.powerspinner.PowerSpinnerView
+                        android:id="@+id/timeSlot"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Main Experties"
+                        android:paddingStart="25.85dp"
+                        android:paddingEnd="16dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        android:textSize="16sp"
+                        app:spinner_arrow_gravity="end"
+                        app:spinner_arrow_padding="8dp"
+                        app:spinner_arrow_drawable="@drawable/ic_dropdown"
+                        app:spinner_arrow_show="true"
+                        app:spinner_arrow_tint="@color/Blue_Turquoise"
+                        app:spinner_divider_color="@color/white"
+                        app:spinner_divider_show="true"
+                        app:spinner_divider_size="10dp"
+                        app:spinner_popup_animation="dropdown"
+                        app:spinner_popup_background="@color/white"
+                        app:spinner_popup_elevation="14dp"
+
+                        tools:ignore="RtlCompat" />
+
+
+
+                </com.sinaseyfi.advancedcardview.AdvancedCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/mainExpertiesDegree"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_input_box"
+                        android:fontFamily="@font/poppins"
+                        android:hint="Degree"
+                        android:inputType="textPersonName"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:paddingStart="26dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        tools:ignore="RtlSymmetry" />
+                    <EditText
+                        android:id="@+id/mainExpertiesExperience"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_input_box"
+                        android:fontFamily="@font/poppins"
+                        android:hint="Experience(Years)"
+                        android:inputType="phone"
+                        android:paddingStart="26dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        tools:ignore="RtlSymmetry" />
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Other Experty"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <CheckBox
+                        android:id="@+id/astrology"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:text="Astrology" />
+                    <CheckBox
+                        android:id="@+id/numerology"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:text="Numerology" />
+                    <CheckBox
+                        android:id="@+id/vastuShastra"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:text="Vastu Shastra" />
+                    <CheckBox
+                        android:id="@+id/lalKitab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:text="Lal Kitab" />
+                    <CheckBox
+                        android:id="@+id/tarotCards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:text="Tarot Cards" />
+
+
+                </LinearLayout>
 
                 <!--Terms and conditions text-->
                 <androidx.constraintlayout.widget.ConstraintLayout
