@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
@@ -33,6 +35,7 @@ import com.google.firebase.storage.UploadTask;
 import com.rudraksha.rudrakshashakti.Common.MainActivity;
 import com.rudraksha.rudrakshashakti.Common.ReconnectPage;
 //import com.rudraksha.rudrakshashakti.Common.SplashScreen;
+import com.rudraksha.rudrakshashakti.Pojo.ExpertDetails;
 import com.rudraksha.rudrakshashakti.Utilities.InternetConnection;
 import com.rudraksha.rudrakshashakti.Utilities.MyProgressDialog;
 import com.rudraksha.rudrakshashakti.Utilities.Utilities;
@@ -44,8 +47,10 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -61,9 +66,9 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
 
     FirebaseAuth mAuth;
 
-    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender;
-
-
+    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks;
+    List<String> otherExperties = new ArrayList<String>();
+    boolean allSelected = false;
     private MyProgressDialog progressDialog;
 
     @Override
@@ -94,7 +99,19 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         //set states array list
         setStates();
         setGender();
+        setMainExperties();
     }
+
+    private void setMainExperties() {
+        List<String> popupItems = new ArrayList<String>();
+        popupItems.add("Astrology");
+        popupItems.add("Numerology");
+        popupItems.add("Vastu Shastra");
+        popupItems.add("Lal Kitab");
+        popupItems.add("Tarot Card");
+        aBinding.mainExperty.setItems(popupItems);
+    }
+
 
     /**Reconnects and also checks internet connection*/
     public void reconnect() {
@@ -120,6 +137,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.gender.setAdapter(gender);
     }
 
+
+
     /**
      * set State Array adapter*/
     private void setStates() {
@@ -137,6 +156,12 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.inputDateOfBirth.setOnClickListener(this);
         aBinding.inputStateOfBirth.setOnClickListener(this);
         aBinding.gender.setOnClickListener(this);
+        aBinding.all.setOnClickListener(this);
+        aBinding.astrology.setOnClickListener(this);
+        aBinding.numerology.setOnClickListener(this);
+        aBinding.tarotCard.setOnClickListener(this);
+        aBinding.vastuShastra.setOnClickListener(this);
+        aBinding.lalKitab.setOnClickListener(this);
     }
 
     @Override
@@ -153,20 +178,80 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             selectState();
         }else if(view == aBinding.gender){
             selectGender();
+        }else if(view == aBinding.all){
+                aBinding.all.setClickable(true);
+                if (((CheckBox) view).isChecked()) {
+                    allSelected = true;
+                    aBinding.astrology.setChecked(true);
+                    aBinding.numerology.setChecked(true);
+                    aBinding.vastuShastra.setChecked(true);
+                    aBinding.tarotCard.setChecked(true);
+                    aBinding.lalKitab.setChecked(true);
+                    aBinding.astrology.setClickable(false);
+                    aBinding.numerology.setClickable(false);
+                    aBinding.vastuShastra.setClickable(false);
+                    aBinding.tarotCard.setClickable(false);
+                    aBinding.lalKitab.setClickable(false);
+                } else {
+                    allSelected = false;
+                    aBinding.astrology.setChecked(false);
+                    aBinding.numerology.setChecked(false);
+                    aBinding.vastuShastra.setChecked(false);
+                    aBinding.tarotCard.setChecked(false);
+                    aBinding.lalKitab.setChecked(false);
+
+                    aBinding.astrology.setClickable(true);
+                    aBinding.numerology.setClickable(true);
+                    aBinding.vastuShastra.setClickable(true);
+                    aBinding.tarotCard.setClickable(true);
+                    aBinding.lalKitab.setClickable(true);
+                }
+            otherExperties.clear();
+            getOtherExperties("all","add");
+        }else if(view == aBinding.astrology){
+            if (((CheckBox) view).isChecked()) {
+                getOtherExperties("Astrology","add");
+            }else{
+                getOtherExperties("Astrology","remove");
+            }
+        }else if(view == aBinding.numerology){
+            if (((CheckBox) view).isChecked()) {
+                getOtherExperties("Numerology","add");
+            }else{
+                getOtherExperties("Numerology","remove");
+            }
+        }else if(view == aBinding.vastuShastra){
+            if (((CheckBox) view).isChecked()) {
+                getOtherExperties("Vastu Shastra","add");
+            }else{
+                getOtherExperties("Vastu Shastra","remove");
+            }
+        }else if(view == aBinding.lalKitab){
+            if (((CheckBox) view).isChecked()) {
+                getOtherExperties("Lal Kitab","add");
+            }else{
+                getOtherExperties("Lal Kitab","remove");
+            }
+        }else if(view == aBinding.tarotCard){
+            if (((CheckBox) view).isChecked()) {
+                getOtherExperties("Tarot Card","add");
+            }else{
+                getOtherExperties("Tarot Card","remove");
+            }
         }
     }
+
+
 
     /**
      * It will save all users details and upload it to firestore*/
     private void next() {
-//        getDetails();
-//        if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("")) {
-//            Utilities.makeToast("Enter all Required details", getApplicationContext());
-//        }else{
-//
-//            //compressAndUploadDetails();
-//        }
-        SendToHomeActivity();
+        getDetails();
+        if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("")) {
+            Utilities.makeToast("Enter all Required details", getApplicationContext());
+        }else{
+            compressAndUploadDetails();
+        }
     }
 
     /**
@@ -230,10 +315,10 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos);
             byte[] final_profile_image = baos.toByteArray();
             myProgressDialog.showDialog(this);
-            storageReference.child("UsersProfilePhoto/").child(uid+"_profile_pic").putBytes(final_profile_image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            storageReference.child("ExpertsProfilePhoto/").child(uid+"_profile_pic").putBytes(final_profile_image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    storageReference.child("UsersProfilePhoto/").child(uid+"_profile_pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    storageReference.child("ExpertsProfilePhoto/").child(uid+"_profile_pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
                             Profile_Pic_Uri = uri.toString();
@@ -262,8 +347,40 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
          gender = aBinding.gender.getText().toString();
          state = aBinding.inputStateOfBirth.getText().toString();
          city = aBinding.inputCityOfBirth.getText().toString();
+         fathersName = aBinding.inputFathersName.getText().toString();
+         EmailId = aBinding.inputEmailId.getText().toString();
+         WhatsappNo = aBinding.inputWhatsappNumber.getText().toString();
+         UpiNo = aBinding.inputUPINumber.getText().toString();
+         mainExperty = aBinding.mainExperty.getText().toString();
+         experience = aBinding.inputExperience.getText().toString();
+         remarks = aBinding.remarks.getText().toString();
+
     }
 
+    private void getOtherExperties(String item, String what) {
+        if (item.equals("all")){
+
+            if(allSelected){
+                otherExperties.add("Astrology");
+                otherExperties.add("Vastu Shastra");
+                otherExperties.add("Numerology");
+                otherExperties.add("Lal Kitab");
+                otherExperties.add("Tarot Cards");
+            }else if(!allSelected){
+                otherExperties.remove("Astrology");
+                otherExperties.remove("Vastu Shastra");
+                otherExperties.remove("Numerology");
+                otherExperties.remove("Lal Kitab");
+                otherExperties.remove("Tarot Cards");
+            }
+        }else{
+             if (what.equals("add")){
+                 otherExperties.add(item);
+             }else if(what.equals("remove")){
+                 otherExperties.remove(item);
+             }
+        }
+    }
 
 
     /**
@@ -300,44 +417,20 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * Posts users details in firestore*/
     public void UploadInFirestore() {
-        Map<String, String> data = new HashMap<>();
-        data.put("uid",uid);
-        data.put("name", name);
-        data.put("photoUrl",Profile_Pic_Uri);
-        data.put("dateOfBirth",dateOfBirth);
-        data.put("gender", gender);
-        data.put("state",state);
-        data.put("city",city);
-        String url = "https://us-central1-cosmic-solutions-7388c.cloudfunctions.net/usersDetail\n";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
-                url,
-                new JSONObject(data),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        boolean jsonResponse = true;
-                        try {
-                            jsonResponse = response.getBoolean("success");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        Log.d("TAG", String.valueOf(jsonResponse));
-                        if (jsonResponse) {
-                            SendToHomeActivity();
-                        }
-                        myProgressDialog.dismissDialog();
-                    }
-                }, new Response.ErrorListener() {
+        ExpertDetails expertDetails = new ExpertDetails();
+        expertDetails.setServices(otherExperties);
+        database = FirebaseFirestore.getInstance();
+        database.collection(mainExperty).document(uid).set(expertDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                // enjoy your error status
+            public void onSuccess(Void unused) {
+                myProgressDialog.dismissDialog();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                myProgressDialog.dismissDialog();
             }
         });
-
-        queue.add(request);
     }
 
 

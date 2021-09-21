@@ -140,7 +140,7 @@
                     android:fontFamily="@font/poppins"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:paddingStart="26dp"
                     android:textSize="20sp"
                     android:textColor="@color/Blue_Turquoise"
@@ -159,7 +159,24 @@
                     android:fontFamily="@font/poppins"
                     android:hint="Fathers Name"
                     android:inputType="textPersonName"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:paddingStart="26dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/inputEmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Email Id"
+                    android:inputType="textEmailAddress"
                     android:paddingStart="26dp"
                     android:textSize="20sp"
                     android:textColor="@color/Blue_Turquoise"
@@ -305,7 +322,6 @@
                     />
 
                 <com.sinaseyfi.advancedcardview.AdvancedCardView
-                    android:id="@+id/mainExperties"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -318,13 +334,13 @@
                     app:stroke_Width="0.5dp">
 
                     <com.skydoves.powerspinner.PowerSpinnerView
-                        android:id="@+id/timeSlot"
+                        android:id="@+id/mainExperty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center_vertical"
-                        android:hint="Main Experties"
+                        android:hint="Main Experty"
                         android:paddingStart="25.85dp"
                         android:paddingEnd="16dp"
                         android:textAlignment="textStart"
@@ -349,16 +365,35 @@
 
                 </com.sinaseyfi.advancedcardview.AdvancedCardView>
 
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Experience in years"
+                    android:inputType="phone"
+                    android:paddingStart="26dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+
+
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Other Experty"
+                    android:text="Other Expertieses"
                     android:textColor="@color/Grey"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_regular"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="15dp"
@@ -368,6 +403,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:orientation="vertical">
@@ -382,7 +418,8 @@
                             android:layout_height="wrap_content"
                             android:text="Select All"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintEnd_toStartOf="@+id/tarotCard"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toStartOf="@+id/astrology"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintHorizontal_chainStyle="packed"
                             app:layout_constraintStart_toStartOf="parent"
@@ -392,13 +429,12 @@
                             android:id="@+id/astrology"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
+                            android:buttonTint="@color/Blue_Turquoise"
                             android:text="Astrology"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintEnd_toStartOf="@+id/numerology"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintHorizontal_chainStyle="packed"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/all" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/all"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <CheckBox
                             android:id="@+id/numerology"
@@ -407,49 +443,100 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="16dp"
                             android:text="Numerology"
+                            android:buttonTint="@color/Blue_Turquoise"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toEndOf="@+id/astrology"
-                            app:layout_constraintTop_toBottomOf="@id/all" />
+                            app:layout_constraintTop_toBottomOf="@id/all"
+                            app:layout_constraintStart_toStartOf="@id/all"
+                            app:layout_constraintEnd_toEndOf="@id/all"
+                            />
 
                         <CheckBox
                             android:id="@+id/vastuShastra"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Vastu Shastra"
+                            android:buttonTint="@color/Blue_Turquoise"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintStart_toStartOf="@+id/astrology"
-                            app:layout_constraintTop_toBottomOf="@id/astrology" />
+                            app:layout_constraintEnd_toEndOf="@id/astrology"
+                            app:layout_constraintTop_toBottomOf="@id/astrology"
+                            app:layout_constraintStart_toStartOf="@id/astrology"
+                            />
 
                         <CheckBox
                             android:id="@+id/lalKitab"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Lal Kitab"
+                            android:buttonTint="@color/Blue_Turquoise"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintEnd_toEndOf="@+id/numerology"
-                            app:layout_constraintTop_toBottomOf="@id/numerology" />
+                            app:layout_constraintStart_toStartOf="@id/numerology"
+                            app:layout_constraintEnd_toEndOf="@id/numerology"
+                            app:layout_constraintTop_toBottomOf="@id/numerology"
+                            />
 
                         <CheckBox
                             android:id="@+id/tarotCard"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Tarot Card"
+                            android:buttonTint="@color/Blue_Turquoise"
                             android:textColor="@color/Blue_Turquoise"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toEndOf="@+id/all"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@id/vastuShastra"
+                            app:layout_constraintStart_toStartOf="@id/vastuShastra"
+                            app:layout_constraintEnd_toEndOf="@id/vastuShastra"
+                            />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Remarks"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
 
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="122dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/text_input_box"
+                    >
+                    <EditText
+                        android:id="@+id/remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:hint="Kindly write your all Degrees with respective experience clearly !"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:background="@null"
+                        android:justificationMode="inter_word"
+                        android:gravity="top|left"
+                        android:maxLength="100"
+                        android:textSize="16sp"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:lines="5"
+                        android:scrollHorizontally="false"
+                        />
 
                 </LinearLayout>
+
 
                 <!--Terms and conditions text-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -520,6 +607,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+
 
 
             <!--Next button-->
