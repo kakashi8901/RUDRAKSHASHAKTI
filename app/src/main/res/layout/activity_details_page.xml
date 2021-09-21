@@ -313,7 +313,7 @@
                     android:text="Main Experty"
                     android:textColor="@color/Grey"
                     android:textSize="16sp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_semi_bold"
                     android:layout_marginTop="0dp"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="18dp"
@@ -389,10 +389,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Other Expertieses"
+                    android:text="Other Expertise"
                     android:textColor="@color/Grey"
                     android:textSize="16sp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_semi_bold"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="18dp"
@@ -417,8 +417,8 @@
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Select All"
-                            android:textColor="@color/Blue_Turquoise"
-                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/black"
+                            android:buttonTint="@color/black"
                             app:layout_constraintEnd_toStartOf="@+id/astrology"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintHorizontal_chainStyle="packed"
@@ -429,9 +429,9 @@
                             android:id="@+id/astrology"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
-                            android:buttonTint="@color/Blue_Turquoise"
+                            android:buttonTint="#FF0000"
                             android:text="Astrology"
-                            android:textColor="@color/Blue_Turquoise"
+                            android:textColor="#FF0000"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/all"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -443,8 +443,8 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="16dp"
                             android:text="Numerology"
-                            android:buttonTint="@color/Blue_Turquoise"
-                            android:textColor="@color/Blue_Turquoise"
+                            android:buttonTint="#FFB700"
+                            android:textColor="#FFB700"
                             app:layout_constraintTop_toBottomOf="@id/all"
                             app:layout_constraintStart_toStartOf="@id/all"
                             app:layout_constraintEnd_toEndOf="@id/all"
@@ -467,8 +467,8 @@
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Lal Kitab"
-                            android:buttonTint="@color/Blue_Turquoise"
-                            android:textColor="@color/Blue_Turquoise"
+                            android:buttonTint="@color/Pink_Magenta"
+                            android:textColor="@color/Pink_Magenta"
                             app:layout_constraintStart_toStartOf="@id/numerology"
                             app:layout_constraintEnd_toEndOf="@id/numerology"
                             app:layout_constraintTop_toBottomOf="@id/numerology"
@@ -479,8 +479,8 @@
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:text="Tarot Card"
-                            android:buttonTint="@color/Blue_Turquoise"
-                            android:textColor="@color/Blue_Turquoise"
+                            android:buttonTint="@color/Grey"
+                            android:textColor="@color/Grey"
                             app:layout_constraintTop_toBottomOf="@id/vastuShastra"
                             app:layout_constraintStart_toStartOf="@id/vastuShastra"
                             app:layout_constraintEnd_toEndOf="@id/vastuShastra"
@@ -494,10 +494,148 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Languages"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/allLang"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Select All"
+                            android:textColor="@color/black"
+                            android:buttonTint="@color/black"
+                            app:layout_constraintEnd_toStartOf="@+id/English"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/English"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="English"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/allLang"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/Hindi"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Hindi"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintTop_toBottomOf="@id/allLang"
+                            app:layout_constraintStart_toStartOf="@id/allLang"
+                            app:layout_constraintEnd_toEndOf="@id/allLang"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/bengali"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Bengali"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="@id/English"
+                            app:layout_constraintTop_toBottomOf="@id/English"
+                            app:layout_constraintStart_toStartOf="@id/English"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/kannada"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Kannada"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintStart_toStartOf="@id/Hindi"
+                            app:layout_constraintEnd_toEndOf="@id/Hindi"
+                            app:layout_constraintTop_toBottomOf="@id/Hindi"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/malayalam"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Malayalam"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintTop_toBottomOf="@id/bengali"
+                            app:layout_constraintStart_toStartOf="@id/bengali"
+                            app:layout_constraintEnd_toEndOf="@id/bengali"
+                            />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Charges"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Price per minute (For Calls)"
+                    android:inputType="phone"
+                    android:paddingStart="26dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Remarks"
                     android:textColor="@color/Grey"
                     android:textSize="16sp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/poppins_semi_bold"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="2dp"
                     android:layout_marginStart="18dp"
@@ -511,16 +649,18 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/text_input_box"
                     >
                     <EditText
                         android:id="@+id/remarks"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
                         android:hint="Kindly write your all Degrees with respective experience clearly !"
-                        android:textColorHint="@color/Blue_Turquoise"
+                        android:textColorHint="#FF0000"
                         android:textColor="@color/Blue_Turquoise"
                         android:background="@null"
                         android:justificationMode="inter_word"
@@ -536,6 +676,41 @@
                         />
 
                 </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Referral"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+
+                <!--Name-->
+                <EditText
+                    android:id="@+id/inputReferral"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/text_input_box"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Referral Code (If any)"
+                    android:inputType="textPersonName"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                    android:paddingStart="26dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    tools:ignore="RtlSymmetry" />
 
 
                 <!--Terms and conditions text-->

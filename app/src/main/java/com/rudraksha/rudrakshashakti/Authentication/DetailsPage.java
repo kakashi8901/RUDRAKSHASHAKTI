@@ -52,6 +52,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 
 public class DetailsPage extends AppCompatActivity implements View.OnClickListener{
@@ -66,9 +67,10 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
 
     FirebaseAuth mAuth;
 
-    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks;
+    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral;
     List<String> otherExperties = new ArrayList<String>();
-    boolean allSelected = false;
+    List<String> languages = new ArrayList<String>();
+    boolean allSelected = false,allLanSelected=false;
     private MyProgressDialog progressDialog;
 
     @Override
@@ -162,6 +164,12 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.tarotCard.setOnClickListener(this);
         aBinding.vastuShastra.setOnClickListener(this);
         aBinding.lalKitab.setOnClickListener(this);
+        aBinding.allLang.setOnClickListener(this);
+        aBinding.English.setOnClickListener(this);
+        aBinding.Hindi.setOnClickListener(this);
+        aBinding.bengali.setOnClickListener(this);
+        aBinding.kannada.setOnClickListener(this);
+        aBinding.malayalam.setOnClickListener(this);
     }
 
     @Override
@@ -238,18 +246,111 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             }else{
                 getOtherExperties("Tarot Card","remove");
             }
+        }else if(view == aBinding.allLang){
+            aBinding.allLang.setClickable(true);
+            if (((CheckBox) view).isChecked()) {
+                allLanSelected = true;
+                aBinding.English.setChecked(true);
+                aBinding.bengali.setChecked(true);
+                aBinding.Hindi.setChecked(true);
+                aBinding.kannada.setChecked(true);
+                aBinding.malayalam.setChecked(true);
+
+
+                aBinding.English.setClickable(false);
+                aBinding.bengali.setClickable(false);
+                aBinding.Hindi.setClickable(false);
+                aBinding.kannada.setClickable(false);
+                aBinding.malayalam.setClickable(false);
+            } else {
+                allLanSelected = false;
+                aBinding.English.setChecked(false);
+                aBinding.bengali.setChecked(false);
+                aBinding.Hindi.setChecked(false);
+                aBinding.kannada.setChecked(false);
+                aBinding.malayalam.setChecked(false);
+
+
+                aBinding.English.setClickable(true);
+                aBinding.bengali.setClickable(true);
+                aBinding.Hindi.setClickable(true);
+                aBinding.kannada.setClickable(true);
+                aBinding.malayalam.setClickable(true);
+            }
+            languages.clear();
+            getLanguages("all","add");
+        }else if(view == aBinding.English){
+            if (((CheckBox) view).isChecked()) {
+               getLanguages("English","add");
+            }else{
+               getLanguages("English","remove");
+            }
+        }else if(view == aBinding.Hindi){
+            if (((CheckBox) view).isChecked()) {
+               getLanguages("Hindi","add");
+            }else{
+               getLanguages("Hindi","remove");
+            }
+        }else if(view == aBinding.bengali){
+            if (((CheckBox) view).isChecked()) {
+               getLanguages("Bengali","add");
+            }else{
+               getLanguages("Bengali","remove");
+            }
+        }else if(view == aBinding.kannada){
+            if (((CheckBox) view).isChecked()) {
+               getLanguages("Kannada","add");
+            }else{
+               getLanguages("Kannada","remove");
+            }
+        }else if(view == aBinding.malayalam){
+            if (((CheckBox) view).isChecked()) {
+               getLanguages("Malayalam","add");
+            }else{
+               getLanguages("Malayalam","remove");
+            }
         }
     }
 
+    private void getLanguages(String item, String what) {
+        if (item.equals("all")){
+
+            if(allLanSelected){
+                languages.add("English");
+                languages.add("Bengali");
+                languages.add("Hindi");
+                languages.add("Kannada");
+                languages.add("Malayalam");
+            }else if(!allLanSelected){
+                languages.remove("English");
+                languages.remove("Bengali");
+                languages.remove("Hindi");
+                languages.remove("Kannada");
+                languages.remove("Malayalam");
+            }
+        }else{
+            if (what.equals("add")){
+                languages.add(item);
+            }else if(what.equals("remove")){
+                languages.remove(item);
+            }
+        }
+    }
 
 
     /**
      * It will save all users details and upload it to firestore*/
     private void next() {
         getDetails();
-        if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("")) {
+        if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
             Utilities.makeToast("Enter all Required details", getApplicationContext());
         }else{
+            for( int i=0;i<otherExperties.size();i++){
+                if(otherExperties.get(i).equals(mainExperty)){
+                    otherExperties.remove(i);
+                }
+            }
+            getOtherExperties(mainExperty,"add");
             compressAndUploadDetails();
         }
     }
@@ -354,6 +455,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
          mainExperty = aBinding.mainExperty.getText().toString();
          experience = aBinding.inputExperience.getText().toString();
          remarks = aBinding.remarks.getText().toString();
+         price = aBinding.inputPrice.getText().toString();
+         referral = aBinding.inputReferral.getText().toString();
 
     }
 
@@ -417,8 +520,30 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * Posts users details in firestore*/
     public void UploadInFirestore() {
+        Random rand = new Random();
+        int no = rand.nextInt(100000);
         ExpertDetails expertDetails = new ExpertDetails();
         expertDetails.setServices(otherExperties);
+        expertDetails.setLanguages(languages);
+        expertDetails.setBackground(remarks);
+        expertDetails.setCity(city);
+        expertDetails.setState(state);
+        expertDetails.setName(name);
+        expertDetails.setFathersName(fathersName);
+        expertDetails.setEmailId(EmailId);
+        expertDetails.setWhatsappNo(WhatsappNo);
+        expertDetails.setDateOfBirth(dateOfBirth);
+        expertDetails.setRating("3");
+        expertDetails.setMainService(mainExperty);
+        expertDetails.setExperience(experience);
+        expertDetails.setGender(gender);
+        expertDetails.setUpiNo(UpiNo);
+        expertDetails.setProfilePic(Profile_Pic_Uri);
+        expertDetails.setUid(uid);
+        expertDetails.setPrice(price);
+        expertDetails.setReferral(referral);
+        expertDetails.setUnderReview("true");
+        expertDetails.setMyCode(name.split(" ")[0]+String.valueOf(no));
         database = FirebaseFirestore.getInstance();
         database.collection(mainExperty).document(uid).set(expertDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
