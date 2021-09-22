@@ -100,5 +100,6 @@
     <string name="create_kundali">Create Kundali</string>
     <string name="details">Details</string>
     <string name="whatsapp_number">Whatsapp Number</string>
+    <string name="your_account_is_under_review_status"><u>Your Account Is Under REVIEW Status!!</u></string>
 
 </resources>
