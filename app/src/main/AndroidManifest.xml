@@ -18,17 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RUDRAKSHASHAKTI"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Authentication.UnderReview"
+        <activity android:name=".Authentication.SelectTimeslots"></activity>
+        <activity
+            android:name=".Authentication.UnderReview"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Common.MainActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Common.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Common.ReconnectPage"
             android:screenOrientation="portrait"
@@ -41,11 +43,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Authentication.ChooseAuthentication"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Authentication.DetailsPage"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Authentication.ManageOtp"
             android:screenOrientation="portrait" />

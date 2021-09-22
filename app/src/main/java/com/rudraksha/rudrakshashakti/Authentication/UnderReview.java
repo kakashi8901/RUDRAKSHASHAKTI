@@ -43,7 +43,7 @@ public class UnderReview extends AppCompatActivity implements View.OnClickListen
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]
                 {"aadishaktiadmin@rudraksha.org.in"});
         intent.putExtra(Intent.EXTRA_SUBJECT, "Verify My Documents For Account Creation RUDRASHAKTI");
-        intent.putExtra(Intent.EXTRA_TEXT, "\n\n1. My Colored Photo: \n\n2. My Phone Number: \n\n3. My Whatsapp Number: \n\n4. My UPI Number: \n\n5. My Aadhar Card Photo: \n\n6. My Pan Card: \n\n 7. My Degree Certificate(s): \n\n");
+        intent.putExtra(Intent.EXTRA_TEXT, "\n\n1. My Colored Photo: \n\n2. My Phone Number: \n\n3. My Whatsapp Number: \n\n4. My Aadhar Card Photo: \n\n5. My Pan Card: \n\n6. My Degree Certificate(s): \n\n");
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent,"Choose an Email Client"));
     }

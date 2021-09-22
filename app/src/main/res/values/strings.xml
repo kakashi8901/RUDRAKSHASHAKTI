@@ -100,6 +100,7 @@
     <string name="create_kundali">Create Kundali</string>
     <string name="details">Details</string>
     <string name="whatsapp_number">Whatsapp Number</string>
-    <string name="your_account_is_under_review_status"><u>Your Account Is Under REVIEW Status!!</u></string>
+    <string name="your_account_is_under_review_status"> Your Account is under \n <u>REVIEW</u> Status!! </string>
+    <string name="aadishaktiadmin_rudraksha_org_in"><u>aadishaktiadmin@rudraksha.org.in</u></string>
 
 </resources>

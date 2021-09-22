@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Authentication.SelectTimeslots">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--Title text-->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Set Your Timings For Every Day"
+            android:textAlignment="center"
+            android:textAppearance="@style/information_text" />
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="22dp"
+                        android:paddingEnd="22dp"
+                        android:text="Monday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/mondayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/mondayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/mondayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="Tuesday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/tuesdayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/tuesdayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/tuesdayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="13dp"
+                        android:paddingEnd="13dp"
+                        android:text="Wednesday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/wednesdayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/wednesdayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/wednesdayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="19dp"
+                        android:paddingEnd="19dp"
+                        android:text="Thursday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/thursdayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/thursdayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/thursdayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="28dp"
+                        android:paddingEnd="28dp"
+                        android:text="Friday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/fridayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/fridayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/fridayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="22dp"
+                        android:paddingEnd="22dp"
+                        android:text="Saturday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/saturdayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="2dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/saturdayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/saturdayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    app:cardBackgroundColor="#F4F7FF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingStart="26dp"
+                        android:paddingEnd="26dp"
+                        android:text="Sunday"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </androidx.cardview.widget.CardView>
+
+                <EditText
+                    android:id="@+id/sundayStartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Start Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="12dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="2dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/sundayEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/text_input_box"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/poppins"
+                    android:hint="End Time"
+                    android:paddingStart="20dp"
+                    android:layout_marginStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:textColorHint="@color/Blue_Turquoise"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/sundayHoliday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="Holiday"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/Blue_Turquoise"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
