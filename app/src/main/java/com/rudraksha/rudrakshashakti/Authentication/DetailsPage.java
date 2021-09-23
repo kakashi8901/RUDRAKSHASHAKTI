@@ -8,27 +8,23 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.Checkable;
 import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,16 +38,12 @@ import com.rudraksha.rudrakshashakti.Utilities.Utilities;
 import com.rudraksha.rudrakshashakti.databinding.ActivityDetailsPageBinding;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 
@@ -70,7 +62,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral;
     List<String> otherExperties = new ArrayList<String>();
     List<String> languages = new ArrayList<String>();
-    boolean allSelected = false,allLanSelected=false;
+    List<String> pujans = new ArrayList<String>();
+    boolean allSelected = false,allLanSelected=false,doesAllPuja=false;
     private MyProgressDialog progressDialog;
 
     @Override
@@ -101,7 +94,33 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         //set states array list
         setStates();
         setGender();
+        getPujas();
         setMainExperties();
+    }
+
+    private void getPujas() {
+        myProgressDialog = new MyProgressDialog();
+        myProgressDialog.showDialog(this);
+
+        database.collection("Poojas")
+                .orderBy("id", Query.Direction.ASCENDING)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                pujans.clear();
+                for (DocumentSnapshot snapshot : queryDocumentSnapshots){
+                    pujans.add(snapshot.getString("uid"));
+
+                }
+                myProgressDialog.dismissDialog();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Utilities.makeToast(e.getMessage(),getApplicationContext());
+                myProgressDialog.dismissDialog();
+            }
+        });
     }
 
     private void setMainExperties() {
@@ -170,6 +189,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.bengali.setOnClickListener(this);
         aBinding.kannada.setOnClickListener(this);
         aBinding.malayalam.setOnClickListener(this);
+        aBinding.pujans.setOnClickListener(this);
     }
 
     @Override
@@ -308,6 +328,12 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                getLanguages("Malayalam","add");
             }else{
                getLanguages("Malayalam","remove");
+            }
+        }else if(view == aBinding.pujans){
+            if (((CheckBox) view).isChecked()) {
+                doesAllPuja = true;
+            }else{
+                doesAllPuja =false;
             }
         }
     }
@@ -541,6 +567,10 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         expertDetails.setProfilePic(Profile_Pic_Uri);
         expertDetails.setUid(uid);
         expertDetails.setPrice(price);
+        if(!doesAllPuja){
+            pujans.clear();
+        }
+        expertDetails.setPoojas(pujans);
         expertDetails.setReferral(referral);
         expertDetails.setUnderReview("true");
         expertDetails.setMyCode(name.split(" ")[0]+String.valueOf(no));
@@ -548,7 +578,25 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         database.collection(mainExperty).document(uid).set(expertDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                myProgressDialog.dismissDialog();
+                if(doesAllPuja){
+                    for (int i = 0 ; i< pujans.size(); i++) {
+                        database.collection("Poojas").document(pujans.get(i)).update("experts", FieldValue.arrayUnion(mainExperty+"$"+uid)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                myProgressDialog.dismissDialog();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Utilities.makeToast("Cant add try again !",getApplicationContext());
+
+                            }
+                        });
+                    }
+                }else{
+                    myProgressDialog.dismissDialog();
+                }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

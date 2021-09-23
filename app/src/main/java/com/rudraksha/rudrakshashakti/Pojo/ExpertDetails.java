@@ -3,19 +3,18 @@ package com.rudraksha.rudrakshashakti.Pojo;
 import java.util.List;
 
 public class ExpertDetails {
-    List<String> services,languages;
+    List<String> services,languages,poojas;
     String name,fathersName,emailId,whatsappNo,upiNo,dateOfBirth,gender,state,city,mainService,background,experience,profilePic,rating,uid,underReview,price,referral,myCode;
 
-    public ExpertDetails(List<String> services) {
-        this.services = services;
-    }
+
 
     public ExpertDetails() {
     }
 
-    public ExpertDetails(List<String> services, List<String> languages, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode) {
+    public ExpertDetails(List<String> services, List<String> languages, List<String> poojas, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode) {
         this.services = services;
         this.languages = languages;
+        this.poojas = poojas;
         this.name = name;
         this.fathersName = fathersName;
         this.emailId = emailId;
@@ -35,6 +34,14 @@ public class ExpertDetails {
         this.price = price;
         this.referral = referral;
         this.myCode = myCode;
+    }
+
+    public List<String> getPoojas() {
+        return poojas;
+    }
+
+    public void setPoojas(List<String> poojas) {
+        this.poojas = poojas;
     }
 
     public String getMyCode() {

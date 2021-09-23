@@ -490,6 +490,34 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pujans"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+                <CheckBox
+                    android:id="@+id/pujans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:text="All Hindu Karamkand Pujan"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginTop="6dp"
+                    android:buttonTint="@color/Blue_Turquoise"
+                    android:textColor="@color/Blue_Turquoise"
+                    app:layout_constraintStart_toStartOf="@id/Hindi"
+                    app:layout_constraintEnd_toEndOf="@id/Hindi"
+                    app:layout_constraintTop_toBottomOf="@id/Hindi"
+                    />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -659,12 +687,10 @@
                         android:layout_marginBottom="6dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="12dp"
-                        android:textAllCaps="true"
-                        android:hint="Kindly Mention your Degrees Details along with respective experience in particular fields ..!"
+                        android:hint="KINDLY MENTION YOUR DEGREES DETAILS ALONG WITH RESPECTIVE EXPERIENCES IN PARTICULAR FIELDS ..!"
                         android:textColorHint="#FF0000"
                         android:textColor="@color/Blue_Turquoise"
                         android:background="@null"
-                        android:justificationMode="inter_word"
                         android:gravity="top|left"
                         android:maxLength="100"
                         android:textSize="16sp"
