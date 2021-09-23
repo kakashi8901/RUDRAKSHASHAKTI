@@ -42,9 +42,9 @@ public class PoojaListAdapter extends RecyclerView.Adapter<PoojaListAdapter.Pooj
     public void onBindViewHolder(@NonNull @NotNull PoojaListAdapter.PoojaListViewHolder holder, int position) {
         final PoojaList poojaListModel = poojaList.get(position);
         list = new ArrayList<String>();
-        if(poojaListModel.getPoojaId().equals("Select All")){
-            holder.item.setTextColor(Color.parseColor("#fff"));
-        }
+//        if(poojaListModel.getPoojaId().equals("Select All")){
+//            holder.item.setTextColor(Color.parseColor("#fff"));
+//        }
         holder.item.setText(poojaListModel.getPoojaId());
 
         holder.item.setOnClickListener(new View.OnClickListener() {

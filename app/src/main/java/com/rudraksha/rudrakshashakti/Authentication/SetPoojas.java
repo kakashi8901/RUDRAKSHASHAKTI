@@ -55,10 +55,11 @@ public class SetPoojas extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 poojaLists.clear();
-                PoojaList poojaList = new PoojaList();
-                poojaList.setPoojaId("Select All");
+//                poojaList.setPoojaId("Select All");
                 for (DocumentSnapshot snapshot : queryDocumentSnapshots){
-                    poojaList.setPoojaId(snapshot.getString("poojaName"));
+
+                    PoojaList poojaList = new PoojaList();
+                    poojaList.setPoojaId(snapshot.getString("uid"));
                     poojaLists.add(poojaList);
                 }
                 poojaListAdapter.notifyDataSetChanged();
