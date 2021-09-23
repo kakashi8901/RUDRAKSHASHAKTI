@@ -22,12 +22,14 @@ public class PoojaListAdapter extends RecyclerView.Adapter<PoojaListAdapter.Pooj
 
     Context context;
     ArrayList<PoojaList> poojaList;
-    List<String> list;
+    poojaListner poojaListner;
 
-    public PoojaListAdapter(Context context, ArrayList<PoojaList> poojaList,List<String> list){
+    ArrayList<String> arrayList = new ArrayList<>();
+
+    public PoojaListAdapter(Context context, ArrayList<PoojaList> poojaList, poojaListner poojaListner){
         this.context = context;
         this.poojaList= poojaList;
-        this.list = list;
+        this.poojaListner = poojaListner;
     }
 
     @NotNull
@@ -41,20 +43,18 @@ public class PoojaListAdapter extends RecyclerView.Adapter<PoojaListAdapter.Pooj
     @Override
     public void onBindViewHolder(@NonNull @NotNull PoojaListAdapter.PoojaListViewHolder holder, int position) {
         final PoojaList poojaListModel = poojaList.get(position);
-        list = new ArrayList<String>();
-//        if(poojaListModel.getPoojaId().equals("Select All")){
-//            holder.item.setTextColor(Color.parseColor("#fff"));
-//        }
+
         holder.item.setText(poojaListModel.getPoojaId());
 
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (((CheckBox) view).isChecked()) {
-                    list.add(poojaListModel.getPoojaId());
+                    arrayList.add(poojaListModel.getPoojaId());
                 }else{
-                    list.remove(poojaListModel.getPoojaId());
+                    arrayList.remove(poojaListModel.getPoojaId());
                 }
+                poojaListner.onPoojaItemChange(arrayList);
             }
         });
     }
