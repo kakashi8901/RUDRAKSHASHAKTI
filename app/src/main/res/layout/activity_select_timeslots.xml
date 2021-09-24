@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <!--Title text-->
         <TextView
@@ -538,6 +538,7 @@
             </LinearLayout>
         </HorizontalScrollView>
         <HorizontalScrollView
+            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
@@ -622,6 +623,34 @@
                     />
             </LinearLayout>
         </HorizontalScrollView>
+
+        <!--Next button-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-35dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="50dp">
+
+            <ImageButton
+                android:id="@+id/nextBtn"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/next_btn"
+                android:contentDescription="@string/next"
+                android:src="@drawable/ic_arrow_1" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!--background bottom image-->
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="101.63dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/waves" />
 
 
     </LinearLayout>
