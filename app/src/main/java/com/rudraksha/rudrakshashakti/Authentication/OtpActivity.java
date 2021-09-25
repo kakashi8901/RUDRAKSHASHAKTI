@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -16,6 +17,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,8 +27,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.functions.FirebaseFunctionsException;
 import com.rudraksha.rudrakshashakti.Common.MainActivity;
+import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Utilities.GenericKeyEvent;
 import com.rudraksha.rudrakshashakti.Utilities.GenericTextWatcher;
 import com.rudraksha.rudrakshashakti.Utilities.KeyboardUtil;
@@ -34,10 +41,13 @@ import com.rudraksha.rudrakshashakti.Utilities.Utilities;
 import com.rudraksha.rudrakshashakti.Utilities.VolleySingleton;
 import com.rudraksha.rudrakshashakti.databinding.ActivityOtpBinding;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -55,7 +65,9 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
     private int flag = 1;
     private MyProgressDialog myProgressDialog;
     private PhoneAuthCredential credential;
-    private String fcmToken;
+    FirebaseFirestore database;
+    String uid,expertMainService="",underReview="false";
+
 
 
     @Override
@@ -63,7 +75,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         binding = ActivityOtpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        database = FirebaseFirestore.getInstance();
         phno = getIntent().getExtras().getString("phone");
         binding.phonenumber.setText("+91-" + phno);
         mAuth = FirebaseAuth.getInstance();
@@ -129,8 +141,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
                     if (task.isSuccessful()) {
                         FirebaseUser user = task.getResult().getUser();
                         Uid = user.getUid();
-                        userExistsInFirestore();
-//                        getFcmToken();
+                        checkUnderReviewOrNot();
                     } else {
                         myProgressDialog.dismissDialog();
                         if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
@@ -141,86 +152,6 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
     }
 
 
-    private void getFcmToken() {
-//        FirebaseMessaging.getInstance().getToken()
-//                .addOnCompleteListener(task -> {
-//                    if (!task.isSuccessful()) {
-//                        myProgressDialog.dismissDialog();
-//                        Utilities.makeToast("Please check your internet connection and try again later!", OtpActivity.this);
-//                        return;
-//                    }
-//                    fcmToken = task.getResult();
-//                    getUserbyPhone();
-//                });
-    }
-
-    private void getUserbyPhone() {
-        checkPhone(phno)
-                .addOnCompleteListener(task -> {
-                    myProgressDialog.dismissDialog();
-                    if (!task.isSuccessful()) {
-                        whenfailed(task);
-                    } else {
-                        whenUserFound(task);
-                    }
-                });
-    }
-
-    private void whenUserFound(Task<HashMap<String, Object>> task) {
-        HashMap<String, Object> result = task.getResult();
-        HashMap<String, Object> data = (HashMap<String, Object>) result.get("data");
-        String uid = (String) data.get("uid");
-        String city = (String) data.get("city");
-        String name = (String) data.get("name");
-//        try {
-//            MainActivity.putValues(MainActivity.ALIAS2, "filled", getApplicationContext());
-//            MainActivity.putValues(MainActivity.ALIAS4, uid, getApplicationContext());
-//            MainActivity.putValues(MainActivity.ALIAS3, name, getApplicationContext());
-//            MainActivity.putValues(MainActivity.ALIAS1, phno, getApplicationContext());
-//        } catch (GeneralSecurityException | IOException e) {
-//            e.printStackTrace();
-//        }
-        //todo go to next activity
-    }
-
-    //todo
-    private void whenfailed(Task<HashMap<String, Object>> task) {
-        Exception e = task.getException();
-        if (e instanceof FirebaseFunctionsException) {
-            FirebaseFunctionsException ffe = (FirebaseFunctionsException) e;
-            FirebaseFunctionsException.Code code = ffe.getCode();
-            if (code == FirebaseFunctionsException.Code.NOT_FOUND) {
-//                try {
-//                    MainActivity.putValues(MainActivity.ALIAS1, phno, getApplicationContext());
-//                    MainActivity.putValues(MainActivity.ALIAS4, Uid, getApplicationContext());
-//                } catch (GeneralSecurityException | IOException generalSecurityException) {
-//                    generalSecurityException.printStackTrace();
-//                    return;
-//                }
-                //todo
-//                Intent intent = new Intent(Frame38.this, Frame47.class);
-//                startActivity(intent);
-            } else {
-                //todo
-//                Intent intent = new Intent(Frame38.this, Reconnect.class);
-//                startActivity(intent);
-            }
-        } else {
-//            Intent intent = new Intent(Frame38.this, Reconnect.class);
-//            startActivity(intent);
-        }
-    }
-
-    private Task<HashMap<String, Object>> checkPhone(String text) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("phoneNo", text);
-        data.put("fcm", fcmToken);
-        return Utilities.mFunctions
-                .getHttpsCallable("checkPhone")
-                .call(data)
-                .continueWith(task -> (HashMap<String, Object>) task.getResult().getData());
-
-    }
 
     private void setOTPListeners() {
         binding.otp1.addTextChangedListener(new GenericTextWatcher(binding.otp2, binding.otp1, binding.otp1));
@@ -258,20 +189,9 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         etOtp = binding.otp1.getText().toString() + binding.otp2.getText().toString() +
                 binding.otp3.getText().toString() + binding.otp4.getText().toString() +
                 binding.otp5.getText().toString() + binding.otp6.getText().toString();
-//        if (etOtp.length() != 6) {
-//            disableNext();
-//        } else {
-//            enableNext();
-//        }
+
     }
 
-    private void enableNext() {
-        binding.otpnext.setAlpha(1);
-    }
-
-    private void disableNext() {
-        binding.otpnext.setAlpha(0.5f);
-    }
 
     void initFireBaseCallbacks() {
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -344,47 +264,57 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         return super.dispatchTouchEvent(ev);
     }
 
-    public void userExistsInFirestore() {
-        Map<String, String> userExists = new HashMap<String, String>();
-        userExists.put("uid", FirebaseAuth.getInstance().getUid());
-
-        String url = "https://us-central1-cosmic-solutions-7388c.cloudfunctions.net/userExistsInFirestore\n";
-
-        RequestQueue queue = VolleySingleton.getInstance(this).getRequestQueue();
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
-                url,
-                new JSONObject(userExists),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        boolean jsonResponse = true;
-                        try {
-                            jsonResponse = response.getBoolean("exists");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+    public void checkUnderReviewOrNot() {
+        List<String> services = new ArrayList<>();
+        services.add("Astrology");
+        services.add("Numerology");
+        services.add("Vastu Shastra");
+        services.add("Lal Kitab");
+        services.add("Tarot Card");
+        for (int i = 0; i < services.size(); i++) {
+            int finalI = i;
+            database.collection(services.get(i)).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                @Override
+                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                        if (snapshot.getId().equals(uid)) {
+                            expertMainService = services.get(finalI);
                         }
-                        Log.d("TAG", String.valueOf(jsonResponse));
-                        if (!jsonResponse) {
-                            Intent detailsIntent = new Intent(getApplicationContext(), DetailsPage.class);
-                            detailsIntent.putExtra("fromSplashScreen", "false");
-                            startActivity(detailsIntent);
-                            finish();
-                        }else{
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        myProgressDialog.dismissDialog();
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // enjoy your error status
-                Log.d("TAG", error.getMessage());
-            }
-        });
 
-        queue.add(request);
+                    if (expertMainService.equals("")) {
+                        Intent detailsIntent = new Intent(getApplicationContext(), DetailsPage.class);
+                        detailsIntent.putExtra("fromSplashScreen", "true");
+                        startActivity(detailsIntent);
+                        finish();
+                    }else {
+                        database.collection(expertMainService).document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                underReview = documentSnapshot.getString("underReview");
+                                if (underReview.equals("true")){
+                                    SplashScreen.encrypt.putString("details_filled", "true");
+                                    Intent intent = new Intent(getApplicationContext(), UnderReview.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else if (underReview.equals("false")){
+                                    SplashScreen.encrypt.putString("details_filled", "true");
+                                    SplashScreen.encrypt.putString("under_review", "false");
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
+                    }
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    Utilities.makeToast(e.getMessage(), getApplicationContext());
+                }
+            });
+        }
     }
 }

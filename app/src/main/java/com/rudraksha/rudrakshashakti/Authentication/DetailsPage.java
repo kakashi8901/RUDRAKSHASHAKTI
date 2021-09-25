@@ -31,6 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import com.rudraksha.rudrakshashakti.Common.MainActivity;
 import com.rudraksha.rudrakshashakti.Common.ReconnectPage;
 //import com.rudraksha.rudrakshashakti.Common.SplashScreen;
+import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Pojo.ExpertDetails;
 import com.rudraksha.rudrakshashakti.Utilities.InternetConnection;
 import com.rudraksha.rudrakshashakti.Utilities.MyProgressDialog;
@@ -584,6 +585,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                             @Override
                             public void onSuccess(Void unused) {
                                 myProgressDialog.dismissDialog();
+                                SendToHomeActivity();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -612,7 +614,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * send user to main home page*/
     private void SendToHomeActivity() {
-//        SplashScreen.encrypt.putString("details_filled", "true");
+        SplashScreen.encrypt.putString("details_filled", "true");
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
