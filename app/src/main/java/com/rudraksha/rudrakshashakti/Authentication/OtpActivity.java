@@ -277,18 +277,18 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
-                        if (snapshot.getId().equals(uid)) {
+                        if (snapshot.getId().equals(Uid)) {
                             expertMainService = services.get(finalI);
 
                         }
                     }
                     if (expertMainService.equals("")) {
                         Intent detailsIntent = new Intent(getApplicationContext(), DetailsPage.class);
-                        detailsIntent.putExtra("fromSplashScreen", "true");
+                        detailsIntent.putExtra("fromSplashScreen", "false");
                         startActivity(detailsIntent);
                         finish();
                     }else {
-                        database.collection(expertMainService).document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        database.collection(expertMainService).document(Uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 underReview = documentSnapshot.getString("underReview");

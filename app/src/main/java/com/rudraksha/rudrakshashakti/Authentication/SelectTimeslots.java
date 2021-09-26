@@ -1,10 +1,12 @@
 package com.rudraksha.rudrakshashakti.Authentication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +14,20 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.rudraksha.rudrakshashakti.Common.MainActivity;
+import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.R;
+import com.rudraksha.rudrakshashakti.Utilities.MyProgressDialog;
 import com.rudraksha.rudrakshashakti.Utilities.Utilities;
 import com.rudraksha.rudrakshashakti.databinding.ActivitySelectTimeslotsBinding;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Time;
 import java.text.Format;
@@ -27,14 +40,19 @@ public class SelectTimeslots extends AppCompatActivity implements View.OnClickLi
 
     ActivitySelectTimeslotsBinding binding;
     int hour,minutes;
-    String defaultColor;
+    String defaultColor,uid,expertMainService="";
     List<String> timeslots = new ArrayList<>();
+    FirebaseFirestore database;
+    private MyProgressDialog myProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Incorporating View Binding
         binding= ActivitySelectTimeslotsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        database = FirebaseFirestore.getInstance();
+        uid = mAuth.getUid();
         defaultColor = binding.mondayStartTime.getTextColors().toString();
         //Setting content view to Root view
         setContentView(view);
@@ -45,6 +63,8 @@ public class SelectTimeslots extends AppCompatActivity implements View.OnClickLi
         if(binding.mondayStartTime.getText().toString().equals("") ||binding.mondayEndTime.getText().toString().equals("") ||binding.tuesdayStartTime.getText().toString().equals("") ||binding.tuesdayEndTime.getText().toString().equals("") ||binding.wednesdayStartTime.getText().toString().equals("") ||binding.wednesdayEndTime.getText().toString().equals("") ||binding.thursdayStartTime.getText().toString().equals("") ||binding.thursdayEndTime.getText().toString().equals("") ||binding.fridayStartTime.getText().toString().equals("") ||binding.fridayEndTime.getText().toString().equals("") ||binding.saturdayStartTime.getText().toString().equals("") ||binding.saturdayEndTime.getText().toString().equals("") ||binding.sundayStartTime.getText().toString().equals("") ||binding.sundayEndTime.getText().toString().equals("") ){
             Utilities.makeToast("Enter All fields",getApplicationContext());
         }else{
+            myProgressDialog = new MyProgressDialog();
+            myProgressDialog.showDialog(this);
             timeslots.add("Monday$"+binding.mondayStartTime.getText()+"-"+binding.mondayEndTime.getText());
             timeslots.add("Tuesday$"+binding.tuesdayStartTime.getText()+"-"+binding.tuesdayEndTime.getText());
             timeslots.add("Wednesday$"+binding.wednesdayStartTime.getText()+"-"+binding.wednesdayEndTime.getText());
@@ -52,6 +72,49 @@ public class SelectTimeslots extends AppCompatActivity implements View.OnClickLi
             timeslots.add("Friday$"+binding.fridayStartTime.getText()+"-"+binding.fridayEndTime.getText());
             timeslots.add("Saturday$"+binding.saturdayStartTime.getText()+"-"+binding.saturdayEndTime.getText());
             timeslots.add("Sunday$"+binding.sundayStartTime.getText()+"-"+binding.sundayEndTime.getText());
+
+
+            List<String> services = new ArrayList<>();
+            services.add("Astrology");
+            services.add("Numerology");
+            services.add("Vastu Shastra");
+            services.add("Lal Kitab");
+            services.add("Tarot Card");
+            for (int i = 0; i < services.size(); i++) {
+                int finalI = i;
+                database.collection(services.get(i)).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                            if (snapshot.getId().equals(uid)) {
+                                expertMainService = services.get(finalI);
+                                if (!expertMainService.equals("")){
+                                    Utilities.makeToast(expertMainService+"$"+uid,getApplicationContext());
+                                    myProgressDialog.dismissDialog();
+//                            database.collection(expertMainService).document(uid).update("timings",timeslots).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void unused) {
+//                                    Utilities.makeToast("Added",getApplicationContext());
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull @NotNull Exception e) {
+//                                    Utilities.makeToast("NotAdded",getApplicationContext());
+//                                }
+//                            });
+                                }
+                            }
+                        }
+
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast(e.getMessage(), getApplicationContext());
+                    }
+                });
+            }
         }
     }
 
