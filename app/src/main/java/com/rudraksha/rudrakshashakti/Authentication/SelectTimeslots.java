@@ -88,25 +88,24 @@ public class SelectTimeslots extends AppCompatActivity implements View.OnClickLi
                         for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
                             if (snapshot.getId().equals(uid)) {
                                 expertMainService = services.get(finalI);
-                                if (!expertMainService.equals("")){
-                                    Utilities.makeToast(expertMainService+"$"+uid,getApplicationContext());
-                                    myProgressDialog.dismissDialog();
-//                            database.collection(expertMainService).document(uid).update("timings",timeslots).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                @Override
-//                                public void onSuccess(Void unused) {
-//                                    Utilities.makeToast("Added",getApplicationContext());
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull @NotNull Exception e) {
-//                                    Utilities.makeToast("NotAdded",getApplicationContext());
-//                                }
-//                            });
-                                }
                             }
                         }
 
-
+                        if (!expertMainService.equals("")){
+                            database.collection(expertMainService).document(uid).update("timings",timeslots).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Utilities.makeToast("Added",getApplicationContext());
+                                    myProgressDialog.dismissDialog();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull @NotNull Exception e) {
+                                    Utilities.makeToast("NotAdded",getApplicationContext());
+                                    myProgressDialog.dismissDialog();
+                                }
+                            });
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
