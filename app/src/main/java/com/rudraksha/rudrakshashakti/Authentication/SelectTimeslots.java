@@ -95,13 +95,15 @@ public class SelectTimeslots extends AppCompatActivity implements View.OnClickLi
                             database.collection(expertMainService).document(uid).update("timings",timeslots).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Utilities.makeToast("Added",getApplicationContext());
+                                    SplashScreen.encrypt.putString("details_filled", "true");
+                                    startActivity(new Intent(SelectTimeslots.this,UnderReview.class));
+                                    finish();
                                     myProgressDialog.dismissDialog();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull @NotNull Exception e) {
-                                    Utilities.makeToast("NotAdded",getApplicationContext());
+                                    Utilities.makeToast("Try Again",getApplicationContext());
                                     myProgressDialog.dismissDialog();
                                 }
                             });

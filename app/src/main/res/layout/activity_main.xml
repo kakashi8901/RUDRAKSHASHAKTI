@@ -29,6 +29,11 @@
                 app:cardBackgroundColor="#F0F0F0"
                 >
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_baseline_exit_to_app_24"/>
             </androidx.cardview.widget.CardView>
 
             <!--user profile image and details-->
@@ -129,13 +134,26 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/referralCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Referral Code:"
+                android:textAppearance="@style/heading_16"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"
+                android:textAlignment="textStart"
+                />
+
+            <TextView
                 android:id="@+id/presentCalls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Present Call"
                 android:textAppearance="@style/heading_16"
                 android:fontFamily="@font/poppins_medium"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="22dp"
                 android:layout_marginEnd="22dp"
                 android:textAlignment="textStart"

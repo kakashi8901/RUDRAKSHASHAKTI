@@ -614,8 +614,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * send user to main home page*/
     private void SendToHomeActivity() {
-        SplashScreen.encrypt.putString("details_filled", "true");
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SelectTimeslots.class);
         startActivity(intent);
     }
 

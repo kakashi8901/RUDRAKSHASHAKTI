@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         .load(response.getString("expertProfilePic"))
                                         .into(binding.expertProfilePic);
                                 binding.expertName.setText(response.getString("expertName"));
+                                binding.referralCode.setText( response.getString("referralCode"));
                                 binding.expertLocation.setText(response.getString("expertState")+" "+response.getString("expertCity"));
                                 binding.expertRating.setText(response.getString("expertRating"));
                                 mainService = response.getString("mainService");
