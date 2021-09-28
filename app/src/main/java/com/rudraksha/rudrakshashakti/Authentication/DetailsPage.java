@@ -1,6 +1,7 @@
 package com.rudraksha.rudrakshashakti.Authentication;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -33,10 +35,12 @@ import com.rudraksha.rudrakshashakti.Common.ReconnectPage;
 //import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Pojo.ExpertDetails;
+import com.rudraksha.rudrakshashakti.R;
 import com.rudraksha.rudrakshashakti.Utilities.InternetConnection;
 import com.rudraksha.rudrakshashakti.Utilities.MyProgressDialog;
 import com.rudraksha.rudrakshashakti.Utilities.Utilities;
 import com.rudraksha.rudrakshashakti.databinding.ActivityDetailsPageBinding;
+import com.sinaseyfi.advancedcardview.AdvancedCardView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -64,7 +68,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     List<String> otherExperties = new ArrayList<String>();
     List<String> languages = new ArrayList<String>();
     List<String> pujans = new ArrayList<String>();
-    boolean allSelected = false,allLanSelected=false,doesAllPuja=false;
+    boolean allSelected = false,agreed=false,allLanSelected=false,doesAllPuja=false;
     private MyProgressDialog progressDialog;
 
     @Override
@@ -123,7 +127,22 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             }
         });
     }
-
+    private void openPrivacyPolicy() {
+        Dialog dialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.privacy_policy_dialog,null);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(false);
+        AdvancedCardView done = view.findViewById(R.id.agreeBtn);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                agreed=true;
+            }
+        });
+        dialog.setContentView(view);
+        dialog.show();
+    }
     private void setMainExperties() {
         List<String> popupItems = new ArrayList<String>();
         popupItems.add("Astrology");
@@ -368,18 +387,23 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * It will save all users details and upload it to firestore*/
     private void next() {
-        getDetails();
-        if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
-            Utilities.makeToast("Enter all Required details", getApplicationContext());
-        }else{
-            for( int i=0;i<otherExperties.size();i++){
-                if(otherExperties.get(i).equals(mainExperty)){
-                    otherExperties.remove(i);
+        if (agreed) {
+            getDetails();
+            if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
+                Utilities.makeToast("Enter all Required details", getApplicationContext());
+            }else{
+                for( int i=0;i<otherExperties.size();i++){
+                    if(otherExperties.get(i).equals(mainExperty)){
+                        otherExperties.remove(i);
+                    }
                 }
+                getOtherExperties(mainExperty,"add");
+                compressAndUploadDetails();
             }
-            getOtherExperties(mainExperty,"add");
-            compressAndUploadDetails();
+        }else {
+            openPrivacyPolicy();
         }
+
     }
 
     /**
