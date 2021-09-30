@@ -173,7 +173,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
      * set Gender Array adapter*/
     private void setGender() {
         aBinding.gender.setThreshold(0);
-        final String[] genders = new String[]{"Male" , "Female" , "Other"};
+        final String[] genders = new String[]{"Male" , "Female"};
         ArrayAdapter<String> gender = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, genders);
         aBinding.gender.setAdapter(gender);
     }
@@ -584,7 +584,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         expertDetails.setEmailId(EmailId);
         expertDetails.setWhatsappNo(WhatsappNo);
         expertDetails.setDateOfBirth(dateOfBirth);
-        expertDetails.setRating("3");
+        expertDetails.setRating("No Rating");
         expertDetails.setMainService(mainExperty);
         expertDetails.setExperience(experience);
         expertDetails.setGender(gender);
