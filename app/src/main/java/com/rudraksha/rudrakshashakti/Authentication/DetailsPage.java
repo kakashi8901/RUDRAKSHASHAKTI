@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +47,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -69,6 +71,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     List<String> languages = new ArrayList<String>();
     List<String> pujans = new ArrayList<String>();
     boolean allSelected = false,agreed=false,allLanSelected=false,doesAllPuja=false;
+    boolean correctExperience;
     private MyProgressDialog progressDialog;
 
     @Override
@@ -387,22 +390,28 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * It will save all users details and upload it to firestore*/
     private void next() {
-        if (agreed) {
-            getDetails();
-            if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
-                Utilities.makeToast("Enter all Required details", getApplicationContext());
-            }else{
-                for( int i=0;i<otherExperties.size();i++){
-                    if(otherExperties.get(i).equals(mainExperty)){
-                        otherExperties.remove(i);
-                    }
+            if (agreed) {
+                getDetails();
+                if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
+                    Utilities.makeToast("Enter all Required details", getApplicationContext());
                 }
-                getOtherExperties(mainExperty,"add");
-                compressAndUploadDetails();
+                else if(validateDobAndExperience()==false){
+                    Utilities.makeToast("Enter correct Experience", getApplicationContext());
+                }
+                else {
+
+                    for (int i = 0; i < otherExperties.size(); i++) {
+                        if (otherExperties.get(i).equals(mainExperty)) {
+                            otherExperties.remove(i);
+                    }
+                    }
+                    getOtherExperties(mainExperty, "add");
+                        compressAndUploadDetails();
+
+                }
+            } else {
+                openPrivacyPolicy();
             }
-        }else {
-            openPrivacyPolicy();
-        }
 
     }
 
@@ -632,8 +641,27 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         });
     }
 
+    /**
+     * verify if the user entered correct or valid Experience*/
+    private boolean validateDobAndExperience(){
+       String StringDobYear = dateOfBirth.substring(dateOfBirth.length() - 4);
+        int dobYear = Integer.parseInt(StringDobYear);
 
+        String StringCurrentYear = new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
+        int CurrentYear = Integer.parseInt(StringCurrentYear);
 
+        int age = CurrentYear - dobYear;
+
+        int refExperience = Integer.parseInt(experience);
+
+        if(18 <= (age - refExperience)) {
+            correctExperience = true;
+        }
+        else{
+            correctExperience = false;
+        }
+        return correctExperience;
+    }
 
     /**
      * send user to main home page*/
