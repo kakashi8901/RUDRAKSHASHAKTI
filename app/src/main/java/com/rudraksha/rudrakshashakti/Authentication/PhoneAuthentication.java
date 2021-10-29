@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.rudraksha.rudrakshashakti.Utilities.Utilities;
 import com.rudraksha.rudrakshashakti.databinding.ActivityPhoneAuthenticationBinding;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PhoneAuthentication extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,10 +58,19 @@ public class PhoneAuthentication extends AppCompatActivity implements View.OnCli
 //        Utilities.makeToast("Clicked", getApplicationContext());
         phoneNumber = binding.editTextPhone;
 
-        Intent intent = new Intent(PhoneAuthentication.this, OtpActivity.class);
-        intent.putExtra("phone", phoneNumber.getText().toString());
-        startActivity(intent);
-        finish();
+        String validNumber =phoneNumber.getText().toString();
+
+        Pattern p = Pattern.compile("(0|91)?[6-9][0-9]{9}");
+        Matcher m = p.matcher(validNumber);
+
+        if(m.find() && m.group().equals(validNumber)){
+            Intent intent = new Intent(PhoneAuthentication.this, OtpActivity.class);
+            intent.putExtra("phone", phoneNumber.getText().toString());
+            startActivity(intent);
+            finish();
+        }else {
+            Toast.makeText(peekAvailableContext().getApplicationContext(), "Invalid Number ", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void back() {

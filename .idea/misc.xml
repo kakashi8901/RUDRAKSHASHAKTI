@@ -7,6 +7,11 @@
         <entry key="app/src/main/res/layout/activity_details_page.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
         <entry key="app/src/main/res/layout/activity_phone_authentication.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_select_timeslots.xml" value="0.20969202898550723" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2418478260869565" />
+        <entry key="app/src/main/res/layout/previous_calls_cards.xml" value="0.2418478260869565" />
+        <entry key="app/src/main/res/layout/privacy_policy_dialog.xml" value="0.2418478260869565" />
+        <entry key="app/src/main/res/layout/upcomming_calls_card.xml" value="0.2418478260869565" />
       </map>
     </option>
   </component>
