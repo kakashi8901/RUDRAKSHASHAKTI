@@ -14,7 +14,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,7 +48,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -66,13 +66,18 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
 
     FirebaseAuth mAuth;
 
-    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral;
+    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral,availableForCourses,courseMode,DurationOfCourse,sessions,coursePrice,expertNote;
     List<String> otherExperties = new ArrayList<String>();
+    List<String> coursesList = new ArrayList<String>();
     List<String> languages = new ArrayList<String>();
     List<String> pujans = new ArrayList<String>();
-    boolean allSelected = false,agreed=false,allLanSelected=false,doesAllPuja=false;
-    boolean correctExperience;
+    boolean allSelected = false,agreed=false,allLanSelected=false,doesAllPuja=false,callSelected = false;
     private MyProgressDialog progressDialog;
+
+    TextView txtPoojans;
+    CheckBox poojans;
+
+    LinearLayout courseLayout;
 
     @Override
     protected void onStart() {
@@ -98,12 +103,15 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         setContentView(view);
         setListeners();
 
+        courseLayout =(LinearLayout)findViewById(R.id.coursesLayoutBox);
+        courseLayout.setVisibility(View.GONE);
 
         //set states array list
         setStates();
         setGender();
         getPujas();
         setMainExperties();
+        setCourseMode();
     }
 
     private void getPujas() {
@@ -206,6 +214,12 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.tarotCard.setOnClickListener(this);
         aBinding.vastuShastra.setOnClickListener(this);
         aBinding.lalKitab.setOnClickListener(this);
+        aBinding.call.setOnClickListener(this);
+        aBinding.castrology.setOnClickListener(this);
+        aBinding.cnumerology.setOnClickListener(this);
+        aBinding.ctarotCard.setOnClickListener(this);
+        aBinding.cvastuShastra.setOnClickListener(this);
+        aBinding.clalKitab.setOnClickListener(this);
         aBinding.allLang.setOnClickListener(this);
         aBinding.English.setOnClickListener(this);
         aBinding.Hindi.setOnClickListener(this);
@@ -213,10 +227,19 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.kannada.setOnClickListener(this);
         aBinding.malayalam.setOnClickListener(this);
         aBinding.pujans.setOnClickListener(this);
+        aBinding.coursesCheckbox.setOnClickListener(this);
+        aBinding.courseMode.setOnClickListener(this);
+        aBinding.inputDuration.setOnClickListener(this);
+        aBinding.inputSessions.setOnClickListener(this);
+        aBinding.inputCoursesPrice.setOnClickListener(this);
+        aBinding.expertNote.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+
+        txtPoojans = findViewById(R.id.txtPoojans);
+        poojans = findViewById(R.id.pujans);
         if (view == aBinding.nextBtn) {
             next();
         } else if (view == aBinding.backBtn) {
@@ -229,41 +252,56 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             selectState();
         }else if(view == aBinding.gender){
             selectGender();
-        }else if(view == aBinding.all){
-                aBinding.all.setClickable(true);
-                if (((CheckBox) view).isChecked()) {
-                    allSelected = true;
-                    aBinding.astrology.setChecked(true);
-                    aBinding.numerology.setChecked(true);
-                    aBinding.vastuShastra.setChecked(true);
-                    aBinding.tarotCard.setChecked(true);
-                    aBinding.lalKitab.setChecked(true);
-                    aBinding.astrology.setClickable(false);
-                    aBinding.numerology.setClickable(false);
-                    aBinding.vastuShastra.setClickable(false);
-                    aBinding.tarotCard.setClickable(false);
-                    aBinding.lalKitab.setClickable(false);
-                } else {
-                    allSelected = false;
-                    aBinding.astrology.setChecked(false);
-                    aBinding.numerology.setChecked(false);
-                    aBinding.vastuShastra.setChecked(false);
-                    aBinding.tarotCard.setChecked(false);
-                    aBinding.lalKitab.setChecked(false);
+        }else if(view == aBinding.courseMode){
+            selectCourseMode();
+        }
+        else if(view == aBinding.all){
+            aBinding.all.setClickable(true);
+            if (((CheckBox) view).isChecked()) {
+                allSelected = true;
+                aBinding.astrology.setChecked(true);
+                aBinding.numerology.setChecked(true);
+                aBinding.vastuShastra.setChecked(true);
+                aBinding.tarotCard.setChecked(true);
+                aBinding.lalKitab.setChecked(true);
+                aBinding.astrology.setClickable(false);
+                aBinding.numerology.setClickable(false);
+                aBinding.vastuShastra.setClickable(false);
+                aBinding.tarotCard.setClickable(false);
+                aBinding.lalKitab.setClickable(false);
 
-                    aBinding.astrology.setClickable(true);
-                    aBinding.numerology.setClickable(true);
-                    aBinding.vastuShastra.setClickable(true);
-                    aBinding.tarotCard.setClickable(true);
-                    aBinding.lalKitab.setClickable(true);
-                }
+                txtPoojans.setVisibility(View.VISIBLE);
+                poojans.setVisibility(View.VISIBLE);
+            } else {
+                allSelected = false;
+                aBinding.astrology.setChecked(false);
+                aBinding.numerology.setChecked(false);
+                aBinding.vastuShastra.setChecked(false);
+                aBinding.tarotCard.setChecked(false);
+                aBinding.lalKitab.setChecked(false);
+
+                aBinding.astrology.setClickable(true);
+                aBinding.numerology.setClickable(true);
+                aBinding.vastuShastra.setClickable(true);
+                aBinding.tarotCard.setClickable(true);
+                aBinding.lalKitab.setClickable(true);
+
+                txtPoojans.setVisibility(View.GONE);
+                poojans.setVisibility(View.GONE);
+            }
             otherExperties.clear();
             getOtherExperties("all","add");
         }else if(view == aBinding.astrology){
             if (((CheckBox) view).isChecked()) {
                 getOtherExperties("Astrology","add");
+
+                txtPoojans.setVisibility(View.VISIBLE);
+                poojans.setVisibility(View.VISIBLE);
             }else{
                 getOtherExperties("Astrology","remove");
+
+                txtPoojans.setVisibility(View.GONE);
+                poojans.setVisibility(View.GONE);
             }
         }else if(view == aBinding.numerology){
             if (((CheckBox) view).isChecked()) {
@@ -289,7 +327,84 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             }else{
                 getOtherExperties("Tarot Card","remove");
             }
-        }else if(view == aBinding.allLang){
+        }else if(view == aBinding.coursesCheckbox) {
+            aBinding.coursesCheckbox.setClickable(true);
+            if (((CheckBox) view).isChecked()){
+                availableForCourses = "yes";
+                ShowCourseLayout();
+            }
+            else if(!((CheckBox) view).isChecked()){
+                availableForCourses = "no";
+                HideCourseLayout();
+            }
+
+        }else if(view == aBinding.call){
+                aBinding.call.setClickable(true);
+                    if (((CheckBox) view).isChecked()) {
+                        callSelected = true;
+                        aBinding.castrology.setChecked(true);
+                        aBinding.cnumerology.setChecked(true);
+                        aBinding.cvastuShastra.setChecked(true);
+                        aBinding.ctarotCard.setChecked(true);
+                        aBinding.clalKitab.setChecked(true);
+
+                        aBinding.castrology.setClickable(false);
+                        aBinding.cnumerology.setClickable(false);
+                        aBinding.cvastuShastra.setClickable(false);
+                        aBinding.ctarotCard.setClickable(false);
+                        aBinding.clalKitab.setClickable(false);
+
+                    } else {
+                        callSelected = false;
+                        aBinding.castrology.setChecked(false);
+                        aBinding.cnumerology.setChecked(false);
+                        aBinding.cvastuShastra.setChecked(false);
+                        aBinding.ctarotCard.setChecked(false);
+                        aBinding.clalKitab.setChecked(false);
+                        aBinding.castrology.setClickable(true);
+                        aBinding.cnumerology.setClickable(true);
+                        aBinding.cvastuShastra.setClickable(true);
+                        aBinding.ctarotCard.setClickable(true);
+                        aBinding.clalKitab.setClickable(true);
+
+                    }
+
+                    coursesList.clear();
+                    getCourses("all","add");
+
+                }
+        else if(view == aBinding.castrology){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Astrology","add");
+            }else{
+                getCourses("Astrology","remove");
+            }
+        }else if(view == aBinding.cnumerology){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Numerology","add");
+            }else{
+                getCourses("Numerology","remove");
+            }
+        }else if(view == aBinding.cvastuShastra){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Vastu Shastra","add");
+            }else{
+                getCourses("Vastu Shastra","remove");
+            }
+        }else if(view == aBinding.clalKitab){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Lal Kitab","add");
+            }else{
+                getCourses("Lal Kitab","remove");
+            }
+        }else if(view == aBinding.ctarotCard){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Tarot Card","add");
+            }else{
+                getCourses("Tarot Card","remove");
+            }
+        }
+        else if(view == aBinding.allLang){
             aBinding.allLang.setClickable(true);
             if (((CheckBox) view).isChecked()) {
                 allLanSelected = true;
@@ -324,33 +439,33 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
             getLanguages("all","add");
         }else if(view == aBinding.English){
             if (((CheckBox) view).isChecked()) {
-               getLanguages("English","add");
+                getLanguages("English","add");
             }else{
-               getLanguages("English","remove");
+                getLanguages("English","remove");
             }
         }else if(view == aBinding.Hindi){
             if (((CheckBox) view).isChecked()) {
-               getLanguages("Hindi","add");
+                getLanguages("Hindi","add");
             }else{
-               getLanguages("Hindi","remove");
+                getLanguages("Hindi","remove");
             }
         }else if(view == aBinding.bengali){
             if (((CheckBox) view).isChecked()) {
-               getLanguages("Bengali","add");
+                getLanguages("Bengali","add");
             }else{
-               getLanguages("Bengali","remove");
+                getLanguages("Bengali","remove");
             }
         }else if(view == aBinding.kannada){
             if (((CheckBox) view).isChecked()) {
-               getLanguages("Kannada","add");
+                getLanguages("Kannada","add");
             }else{
-               getLanguages("Kannada","remove");
+                getLanguages("Kannada","remove");
             }
         }else if(view == aBinding.malayalam){
             if (((CheckBox) view).isChecked()) {
-               getLanguages("Malayalam","add");
+                getLanguages("Malayalam","add");
             }else{
-               getLanguages("Malayalam","remove");
+                getLanguages("Malayalam","remove");
             }
         }else if(view == aBinding.pujans){
             if (((CheckBox) view).isChecked()) {
@@ -390,28 +505,22 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * It will save all users details and upload it to firestore*/
     private void next() {
-            if (agreed) {
-                getDetails();
-                if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
-                    Utilities.makeToast("Enter all Required details", getApplicationContext());
-                }
-                else if(validateDobAndExperience()==false){
-                    Utilities.makeToast("Enter correct Experience", getApplicationContext());
-                }
-                else {
-
-                    for (int i = 0; i < otherExperties.size(); i++) {
-                        if (otherExperties.get(i).equals(mainExperty)) {
-                            otherExperties.remove(i);
+        if (agreed) {
+            getDetails();
+            if (name.equals("") || dateOfBirth.equals("") || gender.equals("") || state.equals("") || city.equals("") || fathersName.equals("") || EmailId.equals("") || WhatsappNo.equals("") || UpiNo.equals("") || mainExperty.equals("") || experience.equals("") || remarks.equals("") || languages.isEmpty() || price.equals("")) {
+                Utilities.makeToast("Enter all Required details", getApplicationContext());
+            }else{
+                for( int i=0;i<otherExperties.size();i++){
+                    if(otherExperties.get(i).equals(mainExperty)){
+                        otherExperties.remove(i);
                     }
-                    }
-                    getOtherExperties(mainExperty, "add");
-                        compressAndUploadDetails();
-
                 }
-            } else {
-                openPrivacyPolicy();
+                getOtherExperties(mainExperty,"add");
+                compressAndUploadDetails();
             }
+        }else {
+            openPrivacyPolicy();
+        }
 
     }
 
@@ -460,7 +569,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     private void compressAndUploadDetails(){
         myProgressDialog = new MyProgressDialog();
         if(imageUri != null){
-           uploadImage();
+            uploadImage();
         }else{
             Utilities.makeToast("Please Select a profile image", this);
         }
@@ -503,20 +612,26 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
     /**
      * Get all the input values by users and store it in string*/
     private void getDetails(){
-         name = aBinding.inputName.getText().toString();
-         dateOfBirth = aBinding.inputDateOfBirth.getText().toString();
-         gender = aBinding.gender.getText().toString();
-         state = aBinding.inputStateOfBirth.getText().toString();
-         city = aBinding.inputCityOfBirth.getText().toString();
-         fathersName = aBinding.inputFathersName.getText().toString();
-         EmailId = aBinding.inputEmailId.getText().toString();
-         WhatsappNo = aBinding.inputWhatsappNumber.getText().toString();
-         UpiNo = aBinding.inputUPINumber.getText().toString();
-         mainExperty = aBinding.mainExperty.getText().toString();
-         experience = aBinding.inputExperience.getText().toString();
-         remarks = aBinding.remarks.getText().toString();
-         price = aBinding.inputPrice.getText().toString();
-         referral = aBinding.inputReferral.getText().toString();
+        name = aBinding.inputName.getText().toString();
+        dateOfBirth = aBinding.inputDateOfBirth.getText().toString();
+        gender = aBinding.gender.getText().toString();
+        state = aBinding.inputStateOfBirth.getText().toString();
+        city = aBinding.inputCityOfBirth.getText().toString();
+        fathersName = aBinding.inputFathersName.getText().toString();
+        EmailId = aBinding.inputEmailId.getText().toString();
+        WhatsappNo = aBinding.inputWhatsappNumber.getText().toString();
+        UpiNo = aBinding.inputUPINumber.getText().toString();
+        mainExperty = aBinding.mainExperty.getText().toString();
+        experience = aBinding.inputExperience.getText().toString();
+        remarks = aBinding.remarks.getText().toString();
+        price = aBinding.inputPrice.getText().toString();
+        referral = aBinding.inputReferral.getText().toString();
+        courseMode = aBinding.courseMode.getText().toString();
+        DurationOfCourse = aBinding.inputDuration.getText().toString();
+        sessions = aBinding.inputSessions.getText().toString();
+        coursePrice = aBinding.inputCoursesPrice.getText().toString();
+        expertNote = aBinding.expertNote.getText().toString();
+
 
     }
 
@@ -537,11 +652,36 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                 otherExperties.remove("Tarot Cards");
             }
         }else{
-             if (what.equals("add")){
-                 otherExperties.add(item);
-             }else if(what.equals("remove")){
-                 otherExperties.remove(item);
-             }
+            if (what.equals("add")){
+                otherExperties.add(item);
+            }else if(what.equals("remove")){
+                otherExperties.remove(item);
+            }
+        }
+    }
+
+    private void getCourses(String item, String what) {
+        if (item.equals("all")){
+
+            if(callSelected){
+                coursesList.add("Astrology");
+                coursesList.add("Vastu Shastra");
+                coursesList.add("Numerology");
+                coursesList.add("Lal Kitab");
+                coursesList.add("Tarot Cards");
+            }else if(!callSelected){
+                coursesList.remove("Astrology");
+                coursesList.remove("Vastu Shastra");
+                coursesList.remove("Numerology");
+                coursesList.remove("Lal Kitab");
+                coursesList.remove("Tarot Cards");
+            }
+        }else{
+            if (what.equals("add")){
+                coursesList.add(item);
+            }else if(what.equals("remove")){
+                coursesList.remove(item);
+            }
         }
     }
 
@@ -562,6 +702,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                 aBinding.inputDateOfBirth.setText(date);
             }
         }, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis()- 568025136000L);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         datePickerDialog.show();
     }
@@ -584,6 +725,13 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         int no = rand.nextInt(100000);
         ExpertDetails expertDetails = new ExpertDetails();
         expertDetails.setServices(otherExperties);
+        expertDetails.setavailableForCourses(availableForCourses);
+        expertDetails.setCourses(coursesList);
+        expertDetails.setCourseMode(courseMode);
+        expertDetails.setDurationOfCourse(DurationOfCourse);
+        expertDetails.setsessions(sessions);
+        expertDetails.setCoursePrice(coursePrice);
+        expertDetails.setexpertNote(expertNote);
         expertDetails.setLanguages(languages);
         expertDetails.setBackground(remarks);
         expertDetails.setCity(city);
@@ -641,27 +789,30 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         });
     }
 
-    /**
-     * verify if the user entered correct or valid Experience*/
-    private boolean validateDobAndExperience(){
-       String StringDobYear = dateOfBirth.substring(dateOfBirth.length() - 4);
-        int dobYear = Integer.parseInt(StringDobYear);
 
-        String StringCurrentYear = new SimpleDateFormat("yyyy").format(Calendar.getInstance().getTime());
-        int CurrentYear = Integer.parseInt(StringCurrentYear);
 
-        int age = CurrentYear - dobYear;
+    public void ShowCourseLayout(){
+        courseLayout =(LinearLayout)findViewById(R.id.coursesLayoutBox);
+        courseLayout.setVisibility(View.VISIBLE);
 
-        int refExperience = Integer.parseInt(experience);
-
-        if(18 <= (age - refExperience)) {
-            correctExperience = true;
-        }
-        else{
-            correctExperience = false;
-        }
-        return correctExperience;
     }
+
+    public void HideCourseLayout(){
+        courseLayout =(LinearLayout)findViewById(R.id.coursesLayoutBox);
+        courseLayout.setVisibility(View.GONE);
+
+    }
+
+
+    private void setCourseMode() {
+        aBinding.courseMode.setThreshold(0);
+        final String[] modes = new String[]{"online" , "offline"};
+        ArrayAdapter<String> mode = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, modes);
+        aBinding.courseMode.setAdapter(mode);
+    }
+
+    private void selectCourseMode(){aBinding.courseMode.showDropDown();}
+
 
     /**
      * send user to main home page*/
@@ -669,6 +820,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         Intent intent = new Intent(getApplicationContext(), SelectTimeslots.class);
         startActivity(intent);
     }
+
+
 
 
 

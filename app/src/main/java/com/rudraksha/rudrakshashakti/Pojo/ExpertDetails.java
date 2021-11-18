@@ -3,16 +3,17 @@ package com.rudraksha.rudrakshashakti.Pojo;
 import java.util.List;
 
 public class ExpertDetails {
-    List<String> services,languages,poojas;
-    String name,fathersName,emailId,whatsappNo,upiNo,dateOfBirth,gender,state,city,mainService,background,experience,profilePic,rating,uid,underReview,price,referral,myCode;
+    List<String> services,languages,poojas,courses;
+    String name,fathersName,emailId,whatsappNo,upiNo,dateOfBirth,gender,state,city,mainService,background,experience,profilePic,rating,uid,underReview,price,referral,myCode,availableForCourses,courseMode,DurationOfCourse,sessions,coursePrice,expertNote;
 
 
 
     public ExpertDetails() {
     }
 
-    public ExpertDetails(List<String> services, List<String> languages, List<String> poojas, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode) {
+    public ExpertDetails(List<String> services,List<String> courses, List<String> languages, List<String> poojas, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode,String availableForCourses,String courseMode,String DurationOfCourse,String sessions,String coursePrice,String expertNote) {
         this.services = services;
+        this.courses = courses;
         this.languages = languages;
         this.poojas = poojas;
         this.name = name;
@@ -34,6 +35,12 @@ public class ExpertDetails {
         this.price = price;
         this.referral = referral;
         this.myCode = myCode;
+        this.availableForCourses = availableForCourses;
+        this.courseMode = courseMode;
+        this.DurationOfCourse = DurationOfCourse;
+        this.sessions = sessions;
+        this.coursePrice = coursePrice;
+        this.expertNote = expertNote;
     }
 
     public List<String> getPoojas() {
@@ -211,4 +218,64 @@ public class ExpertDetails {
     public void setServices(List<String> services) {
         this.services = services;
     }
+
+    public List<String> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<String> courses) {
+        this.courses = courses;
+    }
+
+    public String getavailableForCourses() {
+        return availableForCourses;
+    }
+
+    public void setavailableForCourses(String availableForCourses) {
+        this.availableForCourses = availableForCourses;
+    }
+
+    public String getCourseMode() {
+        return courseMode;
+    }
+
+    public void setCourseMode(String courseMode) {
+        this.courseMode = courseMode;
+    }
+    public String getDurationOfCourse() {
+        return DurationOfCourse;
+    }
+
+    public void setDurationOfCourse(String DurationOfCourse) {
+        this.DurationOfCourse = DurationOfCourse;
+    }
+
+    public String getsessions() {
+        return sessions;
+    }
+
+    public void setsessions(String sessions) {
+        this.sessions = sessions;
+    }
+
+    public String getCourcePrice() {
+        return coursePrice;
+    }
+
+    public void setCoursePrice(String coursePrice) {
+        this.coursePrice = coursePrice;
+    }
+
+    public String getexpertNote() {
+        return expertNote;
+    }
+
+    public void setexpertNote(String expertNote) {
+        this.expertNote = expertNote;
+    }
+
+
+
+
+
 }

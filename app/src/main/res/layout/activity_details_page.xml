@@ -494,6 +494,7 @@
 
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/txtPoojans"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pujans"
@@ -521,6 +522,266 @@
                     app:layout_constraintEnd_toEndOf="@id/Hindi"
                     app:layout_constraintTop_toBottomOf="@id/Hindi"
                     />
+
+
+                <TextView
+                    android:id="@+id/txtcourses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="courses"
+                    android:textColor="@color/Grey"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:textAlignment="textStart"
+                    />
+                <CheckBox
+                    android:id="@+id/coursesCheckbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="take courses class"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginEnd="26dp"
+                    android:layout_marginTop="6dp"
+                    android:buttonTint="@color/Pink_Magenta"
+                    android:textColor="@color/Pink_Magenta"
+                    app:layout_constraintStart_toStartOf="@id/Hindi"
+                    app:layout_constraintEnd_toEndOf="@id/Hindi"
+                    app:layout_constraintTop_toBottomOf="@id/Hindi"
+                    />
+                <LinearLayout
+                    android:id="@+id/coursesLayoutBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/call"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Select All"
+                            android:textColor="@color/black"
+                            android:buttonTint="@color/black"
+                            app:layout_constraintEnd_toStartOf="@+id/castrology"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/castrology"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#FF0000"
+                            android:text="Astrology"
+                            android:textColor="#FF0000"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/call"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <CheckBox
+                            android:id="@+id/cnumerology"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="Numerology"
+                            android:buttonTint="#FFB700"
+                            android:textColor="#FFB700"
+                            app:layout_constraintTop_toBottomOf="@id/call"
+                            app:layout_constraintStart_toStartOf="@id/call"
+                            app:layout_constraintEnd_toEndOf="@id/call"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/cvastuShastra"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Vastu Shastra"
+                            android:buttonTint="@color/Blue_Turquoise"
+                            android:textColor="@color/Blue_Turquoise"
+                            app:layout_constraintEnd_toEndOf="@id/castrology"
+                            app:layout_constraintTop_toBottomOf="@id/castrology"
+                            app:layout_constraintStart_toStartOf="@id/castrology"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/clalKitab"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Lal Kitab"
+                            android:buttonTint="@color/Pink_Magenta"
+                            android:textColor="@color/Pink_Magenta"
+                            app:layout_constraintStart_toStartOf="@id/cnumerology"
+                            app:layout_constraintEnd_toEndOf="@id/cnumerology"
+                            app:layout_constraintTop_toBottomOf="@id/cnumerology"
+                            />
+
+                        <CheckBox
+                            android:id="@+id/ctarotCard"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Tarot Card"
+                            android:buttonTint="@color/Grey"
+                            android:textColor="@color/Grey"
+                            app:layout_constraintTop_toBottomOf="@id/cvastuShastra"
+                            app:layout_constraintStart_toStartOf="@id/cvastuShastra"
+                            app:layout_constraintEnd_toEndOf="@id/cvastuShastra"
+                            />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Duration"
+                        android:textColor="@color/Grey"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="15dp"
+                        android:textAlignment="textStart"
+                        />
+
+                    <!--Name-->
+                    <EditText
+                        android:id="@+id/inputDuration"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/text_input_box"
+                        android:fontFamily="@font/poppins"
+                        android:hint="upto 15 months"
+                        android:inputType="phone"
+                        android:maxLength="2"
+                        android:paddingStart="26dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Charges"
+                        android:textColor="@color/Grey"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="15dp"
+                        android:textAlignment="textStart"
+                        />
+
+                    <!--Name-->
+                    <EditText
+                        android:id="@+id/inputCoursesPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/text_input_box"
+                        android:fontFamily="@font/poppins"
+                        android:hint="fee per month"
+                        android:inputType="phone"
+                        android:maxLength="4"
+                        android:paddingStart="26dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sessions"
+                        android:textColor="@color/Grey"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginEnd="15dp"
+                        android:textAlignment="textStart"
+                        />
+
+                    <!--Name-->
+                    <EditText
+                        android:id="@+id/inputSessions"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/text_input_box"
+                        android:fontFamily="@font/poppins"
+                        android:hint="sessions per week"
+                        android:inputType="phone"
+                        android:maxLength="1"
+                        android:paddingStart="26dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise"
+                        tools:ignore="RtlSymmetry" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/courseMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/text_input_box"
+                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:fontFamily="@font/poppins"
+                        android:hint="online or offline"
+                        android:textSize="14sp"
+                        android:paddingStart="26dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:textColorHint="@color/Blue_Turquoise" />
+
+                    <EditText
+                        android:id="@+id/expertNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:hint="Any note which you want to display to your customer"
+                        android:textColorHint="#FF0000"
+                        android:textColor="@color/Blue_Turquoise"
+                        android:background="@null"
+                        android:gravity="top|left"
+                        android:maxLength="100"
+                        android:textSize="16sp"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:lines="5"
+                        android:scrollHorizontally="false"
+                        />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
