@@ -66,7 +66,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
 
     FirebaseAuth mAuth;
 
-    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral,availableForCourses,courseMode,DurationOfCourse,sessions,coursePrice,expertNote;
+    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral,availableForCourses,courseMode,DurationOfCourse,sessions,BasicCoursePrice,AdvanceCoursePrice,expertNote;
     List<String> otherExperties = new ArrayList<String>();
     List<String> coursesList = new ArrayList<String>();
     List<String> languages = new ArrayList<String>();
@@ -220,6 +220,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.ctarotCard.setOnClickListener(this);
         aBinding.cvastuShastra.setOnClickListener(this);
         aBinding.clalKitab.setOnClickListener(this);
+        aBinding.cmobileNumerology.setOnClickListener(this);
         aBinding.allLang.setOnClickListener(this);
         aBinding.English.setOnClickListener(this);
         aBinding.Hindi.setOnClickListener(this);
@@ -231,7 +232,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         aBinding.courseMode.setOnClickListener(this);
         aBinding.inputDuration.setOnClickListener(this);
         aBinding.inputSessions.setOnClickListener(this);
-        aBinding.inputCoursesPrice.setOnClickListener(this);
+        aBinding.inputBasicCoursesPrice.setOnClickListener(this);
+        aBinding.inputAdvanceCoursesPrice.setOnClickListener(this);
         aBinding.expertNote.setOnClickListener(this);
     }
 
@@ -347,12 +349,14 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                         aBinding.cvastuShastra.setChecked(true);
                         aBinding.ctarotCard.setChecked(true);
                         aBinding.clalKitab.setChecked(true);
+                        aBinding.cmobileNumerology.setChecked(true);
 
                         aBinding.castrology.setClickable(false);
                         aBinding.cnumerology.setClickable(false);
                         aBinding.cvastuShastra.setClickable(false);
                         aBinding.ctarotCard.setClickable(false);
                         aBinding.clalKitab.setClickable(false);
+                        aBinding.cmobileNumerology.setClickable(false);
 
                     } else {
                         callSelected = false;
@@ -366,6 +370,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                         aBinding.cvastuShastra.setClickable(true);
                         aBinding.ctarotCard.setClickable(true);
                         aBinding.clalKitab.setClickable(true);
+                        aBinding.cmobileNumerology.setClickable(true);
 
                     }
 
@@ -402,6 +407,12 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                 getCourses("Tarot Card","add");
             }else{
                 getCourses("Tarot Card","remove");
+            }
+        }else if(view == aBinding.cmobileNumerology){
+            if (((CheckBox) view).isChecked()) {
+                getCourses("Mobile Numerology","add");
+            }else{
+                getCourses("Mobile Numerology","remove");
             }
         }
         else if(view == aBinding.allLang){
@@ -629,7 +640,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         courseMode = aBinding.courseMode.getText().toString();
         DurationOfCourse = aBinding.inputDuration.getText().toString();
         sessions = aBinding.inputSessions.getText().toString();
-        coursePrice = aBinding.inputCoursesPrice.getText().toString();
+        BasicCoursePrice = aBinding.inputBasicCoursesPrice.getText().toString();
+        AdvanceCoursePrice = aBinding.inputAdvanceCoursesPrice.getText().toString();
         expertNote = aBinding.expertNote.getText().toString();
 
 
@@ -669,12 +681,15 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                 coursesList.add("Numerology");
                 coursesList.add("Lal Kitab");
                 coursesList.add("Tarot Cards");
+                coursesList.add("Mobile numerology");
+
             }else if(!callSelected){
                 coursesList.remove("Astrology");
                 coursesList.remove("Vastu Shastra");
                 coursesList.remove("Numerology");
                 coursesList.remove("Lal Kitab");
                 coursesList.remove("Tarot Cards");
+                coursesList.remove("Mobile numerology");
             }
         }else{
             if (what.equals("add")){
@@ -730,7 +745,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         expertDetails.setCourseMode(courseMode);
         expertDetails.setDurationOfCourse(DurationOfCourse);
         expertDetails.setsessions(sessions);
-        expertDetails.setCoursePrice(coursePrice);
+        expertDetails.setBasicCoursePrice(BasicCoursePrice);
+        expertDetails.setAdvanceCoursePrice(AdvanceCoursePrice);
         expertDetails.setexpertNote(expertNote);
         expertDetails.setLanguages(languages);
         expertDetails.setBackground(remarks);

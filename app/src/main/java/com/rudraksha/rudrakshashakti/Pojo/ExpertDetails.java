@@ -4,14 +4,14 @@ import java.util.List;
 
 public class ExpertDetails {
     List<String> services,languages,poojas,courses;
-    String name,fathersName,emailId,whatsappNo,upiNo,dateOfBirth,gender,state,city,mainService,background,experience,profilePic,rating,uid,underReview,price,referral,myCode,availableForCourses,courseMode,DurationOfCourse,sessions,coursePrice,expertNote;
+    String name,fathersName,emailId,whatsappNo,upiNo,dateOfBirth,gender,state,city,mainService,background,experience,profilePic,rating,uid,underReview,price,referral,myCode,availableForCourses,courseMode,DurationOfCourse,sessions,BasicCoursePrice,AdvanceCoursePrice,expertNote;
 
 
 
     public ExpertDetails() {
     }
 
-    public ExpertDetails(List<String> services,List<String> courses, List<String> languages, List<String> poojas, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode,String availableForCourses,String courseMode,String DurationOfCourse,String sessions,String coursePrice,String expertNote) {
+    public ExpertDetails(List<String> services,List<String> courses, List<String> languages, List<String> poojas, String name, String fathersName, String emailId, String whatsappNo, String upiNo, String dateOfBirth, String gender, String state, String city, String mainService, String background, String experience, String profilePic, String rating, String uid, String underReview, String price, String referral, String myCode,String availableForCourses,String courseMode,String DurationOfCourse,String sessions,String BasicCoursePrice,String AdvanceCoursePrice,String expertNote) {
         this.services = services;
         this.courses = courses;
         this.languages = languages;
@@ -39,7 +39,8 @@ public class ExpertDetails {
         this.courseMode = courseMode;
         this.DurationOfCourse = DurationOfCourse;
         this.sessions = sessions;
-        this.coursePrice = coursePrice;
+        this.BasicCoursePrice = BasicCoursePrice;
+        this.AdvanceCoursePrice = AdvanceCoursePrice;
         this.expertNote = expertNote;
     }
 
@@ -258,12 +259,20 @@ public class ExpertDetails {
         this.sessions = sessions;
     }
 
-    public String getCourcePrice() {
-        return coursePrice;
+    public String getBasicCourcePrice() {
+        return BasicCoursePrice;
     }
 
-    public void setCoursePrice(String coursePrice) {
-        this.coursePrice = coursePrice;
+    public void setBasicCoursePrice(String coursePrice) {
+        this.BasicCoursePrice = coursePrice;
+    }
+
+    public String getAdvanceCoursePrice() {
+        return AdvanceCoursePrice;
+    }
+
+    public void setAdvanceCoursePrice(String AdvanceCoursePrice) {
+        this.AdvanceCoursePrice = AdvanceCoursePrice;
     }
 
     public String getexpertNote() {
