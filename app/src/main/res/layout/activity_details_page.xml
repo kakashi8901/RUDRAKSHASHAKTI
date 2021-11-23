@@ -57,12 +57,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    >
+                    android:layout_marginRight="16dp">
                     <!--Profile Image-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/profileCard"
@@ -80,14 +80,14 @@
                             android:id="@+id/profilePic"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/ic_profile_pic"
+                            android:contentDescription="@string/name"
                             android:elevation="5dp"
                             android:scaleType="centerCrop"
+                            android:src="@drawable/ic_profile_pic"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:contentDescription="@string/name" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -98,13 +98,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/profileCard"
                         android:layout_alignBottom="@+id/profileCard"
-                        android:background="@drawable/round_button_back"
-                        android:src="@drawable/ic_choose_image"
-                        android:elevation="2dp"
                         android:layout_marginBottom="7dp"
+                        android:background="@drawable/round_button_back"
+                        android:contentDescription="@string/app_name"
+                        android:elevation="2dp"
+                        android:src="@drawable/ic_choose_image"
                         app:layout_constraintBottom_toBottomOf="@+id/profileCard"
-                        app:layout_constraintEnd_toEndOf="@+id/profileCard"
-                        android:contentDescription="@string/app_name" />
+                        app:layout_constraintEnd_toEndOf="@+id/profileCard" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -560,6 +560,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:orientation="vertical">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"

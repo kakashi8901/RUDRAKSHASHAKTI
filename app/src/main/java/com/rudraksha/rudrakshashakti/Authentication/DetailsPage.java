@@ -37,6 +37,7 @@ import com.rudraksha.rudrakshashakti.Common.ReconnectPage;
 //import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Common.SplashScreen;
 import com.rudraksha.rudrakshashakti.Pojo.ExpertDetails;
+import com.rudraksha.rudrakshashakti.Pojo.ExpertCourseDetails;
 import com.rudraksha.rudrakshashakti.R;
 import com.rudraksha.rudrakshashakti.Utilities.InternetConnection;
 import com.rudraksha.rudrakshashakti.Utilities.MyProgressDialog;
@@ -66,7 +67,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
 
     FirebaseAuth mAuth;
 
-    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral,availableForCourses,courseMode,DurationOfCourse,sessions,BasicCoursePrice,AdvanceCoursePrice,expertNote;
+    String name,dateOfBirth,state,city,Profile_Pic_Uri,uid,gender,fathersName,EmailId,WhatsappNo,UpiNo,mainExperty,experience,remarks,price,referral,availableForCourses,courseMode,DurationOfCourse,sessions,BasicCoursePrice,AdvanceCoursePrice,expertNote,ExpertMainCourse;
     List<String> otherExperties = new ArrayList<String>();
     List<String> coursesList = new ArrayList<String>();
     List<String> languages = new ArrayList<String>();
@@ -163,6 +164,8 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         popupItems.add("Tarot Card");
         aBinding.mainExperty.setItems(popupItems);
     }
+
+
 
 
     /**Reconnects and also checks internet connection*/
@@ -604,6 +607,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                         public void onSuccess(Uri uri) {
                             Profile_Pic_Uri = uri.toString();
                             Utilities.makeToast("Upload image sucessfull!!", DetailsPage.this);
+                            uploadCoursesinFirestore();
                             UploadInFirestore();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -643,6 +647,7 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         BasicCoursePrice = aBinding.inputBasicCoursesPrice.getText().toString();
         AdvanceCoursePrice = aBinding.inputAdvanceCoursesPrice.getText().toString();
         expertNote = aBinding.expertNote.getText().toString();
+
 
 
     }
@@ -740,14 +745,6 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
         int no = rand.nextInt(100000);
         ExpertDetails expertDetails = new ExpertDetails();
         expertDetails.setServices(otherExperties);
-        expertDetails.setavailableForCourses(availableForCourses);
-        expertDetails.setCourses(coursesList);
-        expertDetails.setCourseMode(courseMode);
-        expertDetails.setDurationOfCourse(DurationOfCourse);
-        expertDetails.setsessions(sessions);
-        expertDetails.setBasicCoursePrice(BasicCoursePrice);
-        expertDetails.setAdvanceCoursePrice(AdvanceCoursePrice);
-        expertDetails.setexpertNote(expertNote);
         expertDetails.setLanguages(languages);
         expertDetails.setBackground(remarks);
         expertDetails.setCity(city);
@@ -803,6 +800,131 @@ public class DetailsPage extends AppCompatActivity implements View.OnClickListen
                 myProgressDialog.dismissDialog();
             }
         });
+    }
+
+    public void uploadCoursesinFirestore(){
+        Random rand = new Random();
+        int no = rand.nextInt(100000);
+        ExpertCourseDetails expertCourseDetails = new ExpertCourseDetails();
+        expertCourseDetails.setavailableForCourses(availableForCourses);
+        expertCourseDetails.setCourses(coursesList);
+        expertCourseDetails.setCourseMode(courseMode);
+        expertCourseDetails.setDurationOfCourse(DurationOfCourse);
+        expertCourseDetails.setsessions(sessions);
+        expertCourseDetails.setBasicCoursePrice(BasicCoursePrice);
+        expertCourseDetails.setAdvanceCoursePrice(AdvanceCoursePrice);
+        expertCourseDetails.setexpertNote(expertNote);
+
+
+        database = FirebaseFirestore.getInstance();
+        if(aBinding.castrology.isChecked()){
+            {
+        database.collection("Astrology Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                myProgressDialog.dismissDialog();
+                SendToHomeActivity();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Utilities.makeToast("Cant add try again !",getApplicationContext());
+                myProgressDialog.dismissDialog();
+            }
+        });
+
+    }}
+
+        if(aBinding.cnumerology.isChecked()){
+            {
+                database.collection("Numerology Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        myProgressDialog.dismissDialog();
+                        SendToHomeActivity();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast("Cant add try again !",getApplicationContext());
+                        myProgressDialog.dismissDialog();
+                    }
+                });
+
+            }}
+
+        if(aBinding.ctarotCard.isChecked()){
+            {
+                database.collection("Tarot Card Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        myProgressDialog.dismissDialog();
+                        SendToHomeActivity();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast("Cant add try again !",getApplicationContext());
+                        myProgressDialog.dismissDialog();
+                    }
+                });
+
+            }}
+
+        if(aBinding.clalKitab.isChecked()){
+            {
+                database.collection("Lal Kitab Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        myProgressDialog.dismissDialog();
+                        SendToHomeActivity();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast("Cant add try again !",getApplicationContext());
+                        myProgressDialog.dismissDialog();
+                    }
+                });
+
+            }}
+
+        if(aBinding.cvastuShastra.isChecked()){
+            {
+                database.collection("Vastu Shastra Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        myProgressDialog.dismissDialog();
+                        SendToHomeActivity();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast("Cant add try again !",getApplicationContext());
+                        myProgressDialog.dismissDialog();
+                    }
+                });
+
+            }}
+
+        if(aBinding.cmobileNumerology.isChecked()){
+            {
+                database.collection("Mobile Numerology Courses").document(uid).set(expertCourseDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        myProgressDialog.dismissDialog();
+                        SendToHomeActivity();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull @NotNull Exception e) {
+                        Utilities.makeToast("Cant add try again !",getApplicationContext());
+                        myProgressDialog.dismissDialog();
+                    }
+                });
+
+            }}
+
     }
 
 
